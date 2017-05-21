@@ -4,7 +4,7 @@
     Author     : perle
 --%>
 
-<nav>
+<nav class="blue darken-1">
     <div class="nav-wrapper">
         <a href="index-form.jsp" class="brand-logo">JNM 2018</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -36,7 +36,7 @@
         </form>
         <div class="modal-footer">
             <input type="hidden" name="action" value="connexion"/>  
-            <input class="btn waves-effect waves-light" type="submit" value="Connexion" name="submit"/>
+            <input class="btn waves-effect waves-light light-blue accent-3" type="submit" value="Connexion" name="submit"/>
         </div>
     </div>
 </div>

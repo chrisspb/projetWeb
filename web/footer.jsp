@@ -4,7 +4,7 @@
     Author     : perle
 --%>
 
-<footer class="page-footer">
+<footer class="page-footer blue darken-3">
     <div class="container">
         <div class="row">
             <div class="col s12">

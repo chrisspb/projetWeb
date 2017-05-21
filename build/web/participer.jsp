@@ -38,28 +38,24 @@
                             <label for="icon_password">Mot de passe</label>
                         </div>
 
-                        </br>
-
-                        <p>Vous êtes :</p>
-                        <p>
-                            <input name="group1" type="radio" id="miagiste" value = "miagiste"/>
-                            <label for="miagiste">Miagiste</label>
-                        </p>
-                        <p>
-                            <input name="group1" type="radio" id="enseignant" disabled="disabled"/>
-                            <label for="enseignant">Enseignant</label>
-                        </p>
-                        <p>
-                            <input name="group1" type="radio" id="entreprise" value ="entreprise"/>
-                            <label for="entreprise">Entreprise partenaire</label>
-                        </p>
-
-                        </br> 
-
-                        <div class="option_miagiste" id="option_miagiste" style="display: none">
+                        <div class="input-field col s12">
+                            <p>Vous êtes :</p>
+                            <p>
+                                <input name="group1" type="radio" id="miagiste" value = "miagiste"/>
+                                <label for="miagiste">Miagiste</label>
+                            </p>
+                            <p>
+                                <input name="group1" type="radio" id="enseignant" disabled="disabled"/>
+                                <label for="enseignant">Enseignant</label>
+                            </p>
+                            <p>
+                                <input name="group1" type="radio" id="entreprise" value ="entreprise"/>
+                                <label for="entreprise">Entreprise partenaire</label>
+                            </p> 
+                        </div>
+                        <div class="option_miagiste input-field col s12" id="option_miagiste" style="display: none">
                             <p>Date de naissance</p>
                             <input type="date" class="datepicker" id="date_naiss">
-                            </br>
                             <div class="input-field col s12">
                                 <select>
                                     <option value="" disabled selected>Choisissez votre MIAGE :</option>
@@ -69,7 +65,7 @@
                                 </select>
                             </div>
                             <div class="file-field input-field">
-                                <div class="btn">
+                                <div class="btn light-blue accent-3">
                                     <span>File</span>
                                     <input type="file">
                                 </div>
@@ -88,7 +84,7 @@
                             </p>
                         </div>
 
-                        <div class="option_entreprise" id="option_entreprise" style="display: none">
+                        <div class="option_entreprise input-field col s12" id="option_entreprise" style="display: none">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">work</i>
                                 <input id="icon_fonction" type="text" class="validate" name="fonction">
@@ -124,13 +120,11 @@
                                 <label for="icon_sectE" class="">Secteur d'activité de l'entreprise</label>
                             </div>
                         </div>
-
-
                     </div>
+                    </br>
                     <input type="hidden" name="action" value="participer"/>  
-                    <input class="btn waves-effect waves-light" type="submit" value="Envoyer" name="submit"/>
+                    <input class="btn waves-effect waves-light light-blue accent-3" type="submit" value="Envoyer" name="submit"/>
                 </form>
-
             </div>
         </div>
     </body>

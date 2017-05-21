@@ -16,6 +16,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #fafafa;
 }
 
 body .marge {
@@ -35,4 +36,8 @@ main {
 .nav-wrapper {
     margin-left: 7em;
     margin-right: 7em;
+}
+
+.option_miagiste {
+    margin-top: 2em !important;
 }
