@@ -37,6 +37,9 @@
                             <input id="icon_password" type="password" class="validate" name="password">
                             <label for="icon_password">Mot de passe</label>
                         </div>
+
+                        </br>
+
                         <p>Vous êtes :</p>
                         <p>
                             <input name="group1" type="radio" id="miagiste"/>
@@ -64,11 +67,10 @@
                                     <option value="2">Option 2</option>
                                     <option value="3">Option 3</option>
                                 </select>
-                                <label>Materialize Select</label>
                             </div>
                             <div class="file-field input-field">
                                 <div class="btn">
-                                    <span>Photo</span>
+                                    <span>File</span>
                                     <input type="file">
                                 </div>
                                 <div class="file-path-wrapper">
@@ -77,11 +79,11 @@
                             </div>
                             <p>Miagiste diplomé :</p>
                             <p>
-                                <input name="group1" type="radio" id="Ydiplome"/>
+                                <input name="group2" type="radio" id="Ydiplome"/>
                                 <label for="Ydiplome">Oui</label>
                             </p>
                             <p>
-                                <input name="group1" type="radio" id="Ndiplome"/>
+                                <input name="group2" type="radio" id="Ndiplome"/>
                                 <label for="Ndiplome">Non</label>
                             </p>
                         </div>
@@ -102,16 +104,17 @@
                                 <input id="icon_nomE" type="tel" class="validate" name="nomE">
                                 <label for="icon_nomE" class="">Nom entreprise</label>
                             </div>
-                            <div class="input-field col s6">
+                            <div class="input-field col s12">
                                 <i class="material-icons prefix">location_on</i>
                                 <input id="icon_rueE" type="text" class="validate" name="rueE">
                                 <label for="icon_rueE" class="">Rue de l'entreprise</label>
                             </div>
-                            <div class="input-field col s3">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">location_on</i>
                                 <input id="icon_cpE" type="text" class="validate" name="cpE">
                                 <label for="icon_cpE" class="">Code postal</label>
                             </div>
-                            <div class="input-field col s3">
+                            <div class="input-field col s6">
                                 <input id="icon_villeE" type="text" class="validate" name="villeE">
                                 <label for="icon_villeE" class="">Ville</label>
                             </div>
@@ -125,8 +128,8 @@
 
                     </div>
                 </form>
-                <input type="hidden" name="action" value="connexion"/>  
-                <input class="btn waves-effect waves-light" type="submit" value="Connexion" name="submit"/>
+                <input type="hidden" name="action" value="participer"/>  
+                <input class="btn waves-effect waves-light" type="submit" value="Envoyer" name="submit"/>
             </div>
         </div>
     </body>
