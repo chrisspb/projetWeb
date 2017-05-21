@@ -13,4 +13,11 @@ $('#entreprise').on('click', function() {
         document.getElementById('option_entreprise').style.display = ($(this).is(':checked')) ? "block" : "none";
         document.getElementById('option_miagiste').style.display = ($(this).is(':checked')) ? "none" : "block";
 });
+
+$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 80, // Creates a dropdown of 15 years to control year
+    format: 'dd/mm/yyyy',
+    max: true // for today
+  });
     

@@ -47,15 +47,16 @@
                             <label for="enseignant">Enseignant</label>
                         </p>
                         <p>
-                            <input class="with-gap" name="group1" type="radio" id="entreprise"/>
+                            <input name="group1" type="radio" id="entreprise"/>
                             <label for="entreprise">Entreprise partenaire</label>
                         </p>
+
+                        </br> 
+
                         <div class="option_miagiste" id="option_miagiste" style="display: none">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">perm_identity</i>
-                                <input id="icon_date" type="date" class="validate" name="date">
-                                <label for="icon_date" class="">Date de naissance</label>
-                            </div>
+                            <p>Date de naissance</p>
+                            <input type="date" class="datepicker" id="date_naiss">
+                            </br>
                             <div class="input-field col s12">
                                 <select>
                                     <option value="" disabled selected>Choisissez votre MIAGE :</option>
@@ -87,27 +88,35 @@
 
                         <div class="option_entreprise" id="option_entreprise" style="display: none">
                             <div class="input-field col s12">
-                                <i class="material-icons prefix">perm_identity</i>
+                                <i class="material-icons prefix">work</i>
                                 <input id="icon_fonction" type="text" class="validate" name="fonction">
                                 <label for="icon_fonction" class="">Fonction</label>
                             </div>
                             <div class="input-field col s12">
-                                <i class="material-icons prefix">perm_identity</i>
+                                <i class="material-icons prefix">phone</i>
                                 <input id="icon_tel" type="text" class="validate" name="tel">
                                 <label for="icon_tel" class="">Téléphone</label>
                             </div>
                             <div class="input-field col s12">
-                                <i class="material-icons prefix">perm_identity</i>
+                                <i class="material-icons prefix">business</i>
                                 <input id="icon_nomE" type="tel" class="validate" name="nomE">
                                 <label for="icon_nomE" class="">Nom entreprise</label>
                             </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">perm_identity</i>
-                                <input id="icon_adrE" type="text" class="validate" name="adrE">
-                                <label for="icon_adrE" class="">Adresse de l'entreprise</label>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">location_on</i>
+                                <input id="icon_rueE" type="text" class="validate" name="rueE">
+                                <label for="icon_rueE" class="">Rue de l'entreprise</label>
+                            </div>
+                            <div class="input-field col s3">
+                                <input id="icon_cpE" type="text" class="validate" name="cpE">
+                                <label for="icon_cpE" class="">Code postal</label>
+                            </div>
+                            <div class="input-field col s3">
+                                <input id="icon_villeE" type="text" class="validate" name="villeE">
+                                <label for="icon_villeE" class="">Ville</label>
                             </div>
                             <div class="input-field col s12">
-                                <i class="material-icons prefix">perm_identity</i>
+                                <i class="material-icons prefix">business</i>
                                 <input id="icon_sectE" type="text" class="validate" name="sectE">
                                 <label for="icon_sectE" class="">Secteur d'activité de l'entreprise</label>
                             </div>
