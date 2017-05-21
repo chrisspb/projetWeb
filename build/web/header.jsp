@@ -12,7 +12,7 @@
             <li><a href="badges.html">Activités</a></li>
             <li>|</li>
             <li><a href="connexion-form.jsp">Se connecter</a></li>
-            <li><a href="collapsible.html">Participer</a></li>
+            <li><a href="participer-form.jsp">Participer</a></li>
         </ul>
     </div>
 </nav>

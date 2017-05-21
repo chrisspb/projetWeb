@@ -34,6 +34,7 @@
         <!-- SCRIPTS -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/materialize.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/main.js"></script>
 
     </body>
 </html>
