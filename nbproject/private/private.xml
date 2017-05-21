@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/setup/glassfish-resources.xml</file>
             <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/etudiants/modeles/Etudiants.java</file>
-            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/etudiants/modeles/fezfe.java</file>
-            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/etudiants/gestionnaire/GestionnaireEtudiants.java</file>
-            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/servlets/ServletUsers.java</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/web/index-form.jsp</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/etudiants/gestionnaires/GestionnaireEtudiants.java</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/setup/sun-resources.xml</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/web/participer.jsp</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/servlets/ServletEtudiants.java</file>
         </group>
     </open-files>
 </project-private>
