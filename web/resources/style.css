@@ -8,10 +8,19 @@ and open the template in the editor.
     Author     : perle
 */
 
+#nav-mobile .disabled:hover {
+    background: rgb(221,221,221);
+}
+
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+}
+
+body .marge {
+    margin-left: 7em;
+    margin-right: 7em;
 }
 
 body div.card {
@@ -24,6 +33,6 @@ main {
 }
 
 .nav-wrapper {
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-left: 7em;
+    margin-right: 7em;
 }

@@ -12,37 +12,38 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <div class="marge">
+            <h3>Journées Nationales MIAGE 2018 </h3>
+            
+            <p>Chaque année, l’une des MIAGE de France organise 
+                les Journées Nationales MIAGE (JNM) au sein de son université. 
+                À l’occasion de conférences, tables rondes et débats, 
+                elles favorisent les échanges entre les participants :</p>
+            
+            <li>les entreprises du secteur numérique</li>
+            <li>200 étudiants des 20 MIAGE de France</li>
+            <li>40 diplômés</li>
+            <li>les directeurs des MIAGE</li>
+            <li>les enseignants et les personnels administratifs des MIAGE</li>
+            <li>les invités d’autres universités françaises et étrangères</li>
 
-        <div class="card center-align">
-            <div class="card-content">
-                <span class="card-title">Se connecter</span>
-                <form class="s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">email</i>
-                            <input id="icon_email" type="text" class="validate">
-                            <label for="icon_email" class="">Email</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">lock</i>
-                            <input id="icon_password" type="tel" class="validate">
-                            <label for="icon_password">Mot de passe</label>
-                        </div>
-                    </div>
-                </form>
-                <div class="card-action">
-                    <a class="modal-trigger tooltipped accent-color-text" data-position="bottom" data-delay="50" data-tooltip="Click to send" href="#modal" data-tooltip-id="24f3edbc-7d49-147f-eae7-6076ef521241">Envoyer</a>
-                </div>
-                <div id="modal" class="modal modal-lg">
-                    <div class="modal-content modal-close">
-                        <h4>Oops!</h4>
-                        <p>This part is missing right now! Come back later to see it in action!</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Okay</a>
-                    </div>
-                </div>
-            </div>
+            </br>
+            
+            <p>Les JNM c’est aussi :</p>
+            <li>dynamiser le réseau des MIAGE</li>
+            <li>conserver les liens avec les anciens miagistes</li>
+            <li>renforcer la cohésion entre les MIAGE</li>
+            <li>débattre de l’évolution des MIAGE</li>
+            <li>partager des moments conviviaux</li>
+            
+            </br>
+            
+            <p>Cette année, à l’occasion des 40 ans de la MIAGE de Mulhouse, 
+                les JNM sont organisées à l’Université de Haute-Alsace 
+                du 31 mai au 2 juin. Profitant de sa localisation géographique 
+                dans le pays des trois frontières, cette édition est centrée 
+                sur la thématique de « l’international » qui est au coeur 
+                des préoccupations des entreprises du numérique.</p>
         </div>
 
     </body>
