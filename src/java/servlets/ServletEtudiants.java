@@ -24,7 +24,7 @@ import etudiants.modeles.Etudiants;
  */  
 
 @WebServlet(name="ServletUsers", urlPatterns={"/ServletUsers"})
-public class ServletUsers extends HttpServlet {  
+public class ServletEtudiants extends HttpServlet {  
     // ici injection de code ! On n'initialise pas ! 
     
     
@@ -56,7 +56,7 @@ public class ServletUsers extends HttpServlet {
         String message = "";  
         HttpSession session = request.getSession(false);
         System.out.println("KKKKKKKK");
-        
+        System.out.println("Action : " + action);
   
         if (action != null) {  
             
@@ -69,7 +69,9 @@ public class ServletUsers extends HttpServlet {
                 String password = request.getParameter("password");
                 String naissance = request.getParameter("naissance");
                 String photo = request.getParameter("photo");
-                String dip = request.getParameter("diplome");
+                String dip = request.getParameter("group2");
+                System.out.println("dip : " + dip);
+                
                 if(dip.equals("Ydiplome")){
                     diplome = true;
                 }
@@ -79,7 +81,10 @@ public class ServletUsers extends HttpServlet {
                 
                 //Collection<Utilisa-teur> liste = gestionnaireUtilisateurs.getAllUsers(); 
                 System.out.println("Compte créé : " + nom + prenom + email + dip + naissance + photo + diplome);
-
+                forwardTo = "index-form.jsp?";
+                message = "Liste des utilisateurs";
+                request.setAttribute("message", message);
+                
             }
             
             else {  

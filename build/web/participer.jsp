@@ -42,7 +42,7 @@
 
                         <p>Vous êtes :</p>
                         <p>
-                            <input name="group1" type="radio" id="miagiste"/>
+                            <input name="group1" type="radio" id="miagiste" value = "miagiste"/>
                             <label for="miagiste">Miagiste</label>
                         </p>
                         <p>
@@ -50,7 +50,7 @@
                             <label for="enseignant">Enseignant</label>
                         </p>
                         <p>
-                            <input name="group1" type="radio" id="entreprise"/>
+                            <input name="group1" type="radio" id="entreprise" value ="entreprise"/>
                             <label for="entreprise">Entreprise partenaire</label>
                         </p>
 
@@ -79,11 +79,11 @@
                             </div>
                             <p>Miagiste diplomé :</p>
                             <p>
-                                <input name="group2" type="radio" id="Ydiplome"/>
+                                <input name="group2" type="radio" id="Ydiplome" value = "Ydiplome"/>
                                 <label for="Ydiplome">Oui</label>
                             </p>
                             <p>
-                                <input name="group2" type="radio" id="Ndiplome"/>
+                                <input name="group2" type="radio" id="Ndiplome" value = "Ndiplome"/>
                                 <label for="Ndiplome">Non</label>
                             </p>
                         </div>
