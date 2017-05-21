@@ -127,9 +127,10 @@
 
 
                     </div>
+                    <input type="hidden" name="action" value="participer"/>  
+                    <input class="btn waves-effect waves-light" type="submit" value="Envoyer" name="submit"/>
                 </form>
-                <input type="hidden" name="action" value="participer"/>  
-                <input class="btn waves-effect waves-light" type="submit" value="Envoyer" name="submit"/>
+
             </div>
         </div>
     </body>
