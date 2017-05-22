@@ -16,8 +16,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
         <title>Accueil</title>
     </head>
-    <body>
+    <body>        
         <div class="marge">
+            <img class="responsive-img" src="resources/jnm.jpg">
+            
             <h3>Journées Nationales MIAGE 2018 </h3>
 
             <p>Chaque année, l'une des MIAGE de France organise 

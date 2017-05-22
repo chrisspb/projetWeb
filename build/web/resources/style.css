@@ -24,6 +24,10 @@ body .marge {
     margin-right: 7em;
 }
 
+.brand-logo img {
+    margin-top: -1.5em;
+}
+
 body div.card {
     margin-left: 20em;
     margin-right: 20em;
