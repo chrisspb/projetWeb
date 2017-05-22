@@ -17,13 +17,12 @@
                 <span class="card-title">Participer</span>
                 <form class="s12" action="ServletUsers" method="post">
                     <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field col s6">
                             <i class="material-icons prefix">perm_identity</i>
                             <input id="icon_nom" type="text" class="validate" name="nom">
                             <label for="icon_nom" class="">Nom</label>
                         </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">perm_identity</i>
+                        <div class="input-field col s6">
                             <input id="icon_prenom" type="text" class="validate" name="prenom">
                             <label for="icon_prenom" class="">Prénom</label>
                         </div>

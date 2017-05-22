@@ -4,16 +4,44 @@
     Author     : perle
 --%>
 
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="">Vidéo</a></li>
+    <li><a href="">T-Shirt</a></li>
+    <li class="divider"></li>
+    <li><a href="">Dinées</a></li>
+    <li><a href="">Gala</a></li>
+    <li class="divider sortie"></li>
+    <li><a href="">Sortie 1</a></li>
+</ul>
+
+<ul id="dropdown2" class="dropdown-content">
+    <li><a href="">Vidéo</a></li>
+    <li><a href="">T-Shirt</a></li>
+    <li class="divider sortie"></li>
+    <li><a href="">Dinées</a></li>
+    <li><a href="">Gala</a></li>
+    <li class="divider sortie"></li>
+    <li><a href="">Sortie 1</a></li>
+</ul>
+
 <nav class="blue darken-1">
     <div class="nav-wrapper">
         <a href="index-form.jsp" class="brand-logo">JNM 2018</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul class="right hide-on-med-and-down">
             <li><a href="info-form.jsp">Infos pratiques</a></li>
-            <li><a class="disabled">Activités</a></li>
+            <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown1">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
             <li>|</li>
             <li><a href="#connexion">Se connecter</a></li>
             <li><a href="participer-form.jsp">Participer</a></li>
         </ul>
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="info-form.jsp">Infos pratiques</a></li>
+            <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown2">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li>|</li>
+            <li><a href="#connexion">Se connecter</a></li>
+            <li><a href="participer-form.jsp">Participer</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">reorder</i></a>
     </div>
 </nav>
 

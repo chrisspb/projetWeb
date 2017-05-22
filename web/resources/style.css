@@ -25,8 +25,8 @@ body .marge {
 }
 
 body div.card {
-    margin-left: 25em;
-    margin-right: 25em;
+    margin-left: 20em;
+    margin-right: 20em;
 }
 
 main {
@@ -40,4 +40,28 @@ main {
 
 .option_miagiste {
     margin-top: 2em !important;
+}
+
+.titre {
+    margin-top: 2em;
+    border-bottom: solid 1px #00b0ff;
+    padding-bottom: 1.2em;
+}
+
+.sortie {
+    border-top: solid 1px #DFDFDF;
+}
+
+.card-title {
+    padding-bottom: 0.5em;
+    border-bottom: solid 1px #DFDFDF;
+}
+
+.contenu {
+    padding-top: 1em;
+}
+
+.pack {
+    margin: 0 !important;
+    padding: 0!important;
 }

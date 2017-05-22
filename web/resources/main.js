@@ -6,6 +6,8 @@
 $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
+    $('.carousel').carousel();
+    $(".button-collapse").sideNav();
   });
 
 $('#miagiste').on('click', function() { 
@@ -24,3 +26,11 @@ $('.datepicker').pickadate({
     max: true // for today
   });
     
+$('.carousel').carousel({
+    padding: 200    
+});
+autoplay()   
+function autoplay() {
+    $('.carousel').carousel('next');
+    setTimeout(autoplay, 2000);
+}
