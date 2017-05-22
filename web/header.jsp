@@ -8,7 +8,7 @@
     <li><a href="">Vidéo</a></li>
     <li><a href="">T-Shirt</a></li>
     <li class="divider"></li>
-    <li><a href="">Dinées</a></li>
+    <li><a href="">Diners</a></li>
     <li><a href="">Gala</a></li>
     <li class="divider sortie"></li>
     <li><a href="">Sortie 1</a></li>
@@ -18,7 +18,7 @@
     <li><a href="">Vidéo</a></li>
     <li><a href="">T-Shirt</a></li>
     <li class="divider sortie"></li>
-    <li><a href="">Dinées</a></li>
+    <li><a href="">Diners</a></li>
     <li><a href="">Gala</a></li>
     <li class="divider sortie"></li>
     <li><a href="">Sortie 1</a></li>
