@@ -15,7 +15,12 @@
         <div class="card center-align">
             <div class="card-content">
                 <span class="card-title">Participer</span>
-                <form class="s12" action="ServletUsers" method="post">
+                </br>
+                <p>Merci de remplir la procédure d'inscription ci-contre afin de participer aux JNM 2018.</p>
+            </br>
+            <p>Saisissez attentivement vos informations, elles sont nécessaires afin de valider votre participation.</p>
+            </br>
+                <form class="col s12" action="ServletUsers" method="post">
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">perm_identity</i>

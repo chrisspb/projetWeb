@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css"  
               href="${pageContext.request.contextPath}/resources/materialize.css" />  
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--<link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/favicon.png">-->
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/favicon.png">
     </head>  
     <body>  
         <jsp:include page="header.jsp"/>  

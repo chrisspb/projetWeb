@@ -5,8 +5,8 @@
 --%>
 
 <ul id="dropdown1" class="dropdown-content">
-    <li><a href="">Vidéo</a></li>
-    <li><a href="">T-Shirt</a></li>
+    <li><a href="video-form.jsp">Vidéo</a></li>
+    <li><a href="shirt-form.jsp">T-Shirt</a></li>
     <li class="divider"></li>
     <li><a href="">Diners</a></li>
     <li><a href="">Gala</a></li>
@@ -15,8 +15,8 @@
 </ul>
 
 <ul id="dropdown2" class="dropdown-content">
-    <li><a href="">Vidéo</a></li>
-    <li><a href="">T-Shirt</a></li>
+    <li><a href="video-form.jsp">Vidéo</a></li>
+    <li><a href="shirt-form.jsp">T-Shirt</a></li>
     <li class="divider sortie"></li>
     <li><a href="">Diners</a></li>
     <li><a href="">Gala</a></li>

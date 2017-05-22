@@ -20,6 +20,8 @@
         <div class="marge">
             <img class="responsive-img" src="resources/jnm.jpg">
             
+            </br></br></br>
+            
             <h3>Journées Nationales MIAGE 2018 </h3>
 
             <p>Chaque année, l'une des MIAGE de France organise 
