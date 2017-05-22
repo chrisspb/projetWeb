@@ -61,10 +61,14 @@
                     <label for="icon_password">Mot de passe</label>
                 </div>
             </div>
+            <div class="modal-footer">
+                <div class="options">
+                    <p>Pas encore inscrit ? <a href="participer-form.jsp">S'inscrire</a></p>
+                </div>
+                <input type="hidden" name="action" value="connexion"/>  
+                <input class="btn waves-effect waves-light light-blue accent-3" type="submit" value="Connexion" name="submit"/>
+            </div>
         </form>
-        <div class="modal-footer">
-            <input type="hidden" name="action" value="connexion"/>  
-            <input class="btn waves-effect waves-light light-blue accent-3" type="submit" value="Connexion" name="submit"/>
-        </div>
+
     </div>
 </div>

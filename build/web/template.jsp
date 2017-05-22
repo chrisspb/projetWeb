@@ -12,8 +12,7 @@
     <head>  
         <title>${param.title}</title>  
         <link rel="stylesheet" type="text/css"  
-              href="${pageContext.request.contextPath}/resources/style.css" /> 
-
+              href="${pageContext.request.contextPath}/resources/style.css" />  
         <link rel="stylesheet" type="text/css"  
               href="${pageContext.request.contextPath}/resources/materialize.css" />  
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -28,13 +27,12 @@
         <main>
             <jsp:include page="${param.content}.jsp"/>  
         </main>
+        
+        
         <jsp:include page="footer.jsp"/>  
 
-
-        <!-- SCRIPTS -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/materialize.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/main.js"></script>
-
-    </body>
-</html>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/main.js"></script>     
+    </body>  
+</html> 
