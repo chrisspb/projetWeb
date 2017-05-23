@@ -30,6 +30,7 @@
         <ul class="right hide-on-med-and-down">
             <li><a href="info-form.jsp">Infos pratiques</a></li>
             <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown1">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="vote-form.jsp">Voter</a></li>
             <li>|</li>
             <li><a href="#connexion">Se connecter</a></li>
             <li><a href="participer-form.jsp">Participer</a></li>
@@ -37,6 +38,7 @@
         <ul id="nav-mobile" class="side-nav">
             <li><a href="info-form.jsp">Infos pratiques</a></li>
             <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown2">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="vote-form.jsp">Voter</a></li>
             <li>|</li>
             <li><a href="#connexion">Se connecter</a></li>
             <li><a href="participer-form.jsp">Participer</a></li>

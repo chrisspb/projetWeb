@@ -31,25 +31,60 @@
                         <thead>
                             <tr>
                                 <th>Miage</th>
-                                <th>Pays associé</th>
+                                <th>Thème associé</th>
                                 <th></th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>Italie</td>
+                                <td>Aix-Marseille</td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>2</td>
-                                <td>Etats-Unis</td>
+                                <td>Amiens</td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>3</td>
-                                <td>Brésil</td>
+                                <td>Bordeaux</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Grenoble</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Guadeloupe</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Lille</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Mulhouse</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Nancy</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Nantes</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Nice</td>
+                                <td></td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -61,25 +96,55 @@
                         <thead>
                             <tr>
                                 <th>Miage</th>
-                                <th>Pays associé</th>
+                                <th>Thème associé</th>
                                 <th></th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
-                                <td>4</td>
-                                <td>Italie</td>
+                                <td>Orléans</td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>5</td>
-                                <td>Etats-Unis</td>
+                                <td>Paris - Dauphine</td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>6</td>
-                                <td>Brésil</td>
+                                <td>Paris - Descartes</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Paris - Evry</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Paris - Nanterre</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Paris - Orsay</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Paris - Sorbonne</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Rennes</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Toulouse</td>
+                                <td></td>
                                 <td></td>
                             </tr>
                         </tbody>

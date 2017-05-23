@@ -18,7 +18,7 @@
     </head>
     <body>        
         <div class="marge">
-            <img class="responsive-img" src="resources/jnm.jpg">
+            <img class="responsive-img" src="resources/jnm_1.jpg">
             
             </br></br></br>
             
