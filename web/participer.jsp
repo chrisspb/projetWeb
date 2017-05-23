@@ -20,7 +20,7 @@
             </br>
             <p>Saisissez attentivement vos informations, elles sont nécessaires afin de valider votre participation.</p>
             </br>
-                <form class="col s12" action="ServletUsers" method="post">
+                <form class="col s12" action="ServletUsers" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">perm_identity</i>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="option_miagiste input-field col s12" id="option_miagiste" style="display: none">
                             <p>Date de naissance</p>
-                            <input type="date" class="datepicker" id="date_naiss">
+                            <input type="date" class="datepicker" id="date_naiss" name="date_naiss">
                             <div class="input-field col s12">
                                 <select>
                                     <option value="" disabled selected>Choisissez votre MIAGE :</option>
@@ -74,7 +74,7 @@
                                     <input type="file">
                                 </div>
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
+                                    <input class="file-path validate" type="text" name="fichier">
                                 </div>
                             </div>
                             <p>Miagiste diplomé :</p>
