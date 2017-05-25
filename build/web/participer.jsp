@@ -46,7 +46,7 @@
                             <fieldset>
                                 <legend>Vous êtes :</legend>
                                 <p>
-                                    <input name="group1" type="radio" id="miagiste" value = "miagiste"/>
+                                    <input name="group1" type="radio" id="miagiste" value = "miagiste" required/>
                                     <label for="miagiste">Miagiste</label>
                                 </p>
                                 <p>
@@ -54,7 +54,7 @@
                                     <label for="enseignant">Enseignant</label>
                                 </p>
                                 <p>
-                                    <input name="group1" type="radio" id="entreprise" value ="entreprise"/>
+                                    <input name="group1" type="radio" id="entreprise" value ="entreprise" required/>
                                     <label for="entreprise">Entreprise partenaire</label>
                                 </p> 
                             </fieldset>
@@ -63,7 +63,7 @@
                             <p>Date de naissance</p>
                             <input type="date" class="datepicker" id="date_naiss" name="date_naiss">
                             <div class="input-field col s12">
-                                <select>
+                                <select id="choix_miage">
                                     <option value="" disabled selected>Choisissez votre MIAGE :</option>
                                     <option value="1">Option 1</option>
                                     <option value="2">Option 2</option>
@@ -76,18 +76,20 @@
                                     <input type="file">
                                 </div>
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" name="fichier">
+                                    <input class="file-path validate" type="text" name="fichier" id="photo">
                                 </div>
                             </div>
-                            <p>Miagiste diplomé :</p>
-                            <p>
-                                <input name="group2" type="radio" id="Ydiplome" value = "Ydiplome"/>
-                                <label for="Ydiplome">Oui</label>
-                            </p>
-                            <p>
-                                <input name="group2" type="radio" id="Ndiplome" value = "Ndiplome"/>
-                                <label for="Ndiplome">Non</label>
-                            </p>
+                            <fieldset>
+                                <legend>Miagiste diplomé :</legend>
+                                <p>
+                                    <input name="group2" type="radio" id="Ydiplome" value = "Ydiplome"/>
+                                    <label for="Ydiplome">Oui</label>
+                                </p>
+                                <p>
+                                    <input name="group2" type="radio" id="Ndiplome" value = "Ndiplome"/>
+                                    <label for="Ndiplome">Non</label>
+                                </p>
+                            </fieldset>
                         </div>
 
                         <div class="option_entreprise input-field col s12" id="option_entreprise" style="display: none">
