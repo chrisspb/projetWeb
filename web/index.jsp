@@ -16,12 +16,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
         <title>Accueil</title>
     </head>
-    <body>        
+<c:if test="${requestScope['message'] != null}">
+    <body onload="toast();"> 
+</c:if>
+<c:if test="${requestScope['message'] == null}">
+    <body>
+</c:if>
+
         <div class="marge">
             <img class="responsive-img" src="resources/jnm_1.jpg">
-            
+
             </br></br></br>
-            
+
             <h3>Journées Nationales MIAGE 2018 </h3>
 
             <p>Chaque année, l'une des MIAGE de France organise 
@@ -66,4 +72,11 @@
         </div>
 
     </body>
+
+    <script>
+        function toast() {
+            var $toastContent = $('<span>${requestScope['message']}</span>');
+            Materialize.toast($toastContent, 5000);
+        }
+    </script>
 </html>

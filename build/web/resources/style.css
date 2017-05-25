@@ -80,3 +80,11 @@ table {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
 }
+
+.file-field {
+    margin-top: 6em !important;
+}
+
+fieldset {
+    padding-bottom: 2.5em !important;
+}

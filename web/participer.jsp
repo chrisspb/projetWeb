@@ -17,45 +17,47 @@
                 <span class="card-title">Participer</span>
                 </br>
                 <p>Merci de remplir la procédure d'inscription ci-contre afin de participer aux JNM 2018.</p>
-            </br>
-            <p>Saisissez attentivement vos informations, elles sont nécessaires afin de valider votre participation.</p>
-            </br>
+                </br>
+                <p>Saisissez attentivement vos informations, elles sont nécessaires afin de valider votre participation.</p>
+                </br>
                 <form class="col s12" action="ServletUsers" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">perm_identity</i>
-                            <input id="icon_nom" type="text" class="validate" name="nom">
+                            <input id="icon_nom" type="text" class="validate" name="nom" required>
                             <label for="icon_nom" class="">Nom</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="icon_prenom" type="text" class="validate" name="prenom">
+                            <input id="icon_prenom" type="text" class="validate" name="prenom" required>
                             <label for="icon_prenom" class="">Prénom</label>
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">email</i>
-                            <input id="icon_email" type="text" class="validate" name="email">
-                            <label for="icon_email" class="">Email</label>
+                            <input id="icon_email" type="email" class="validate" name="email" required>
+                            <label for="icon_email" data-error="email non valide" data-success="email valide" class="">Email</label>
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
-                            <input id="icon_password" type="password" class="validate" name="password">
+                            <input id="icon_password" type="password" class="validate" name="password" required>
                             <label for="icon_password">Mot de passe</label>
                         </div>
 
                         <div class="input-field col s12">
-                            <p>Vous êtes :</p>
-                            <p>
-                                <input name="group1" type="radio" id="miagiste" value = "miagiste"/>
-                                <label for="miagiste">Miagiste</label>
-                            </p>
-                            <p>
-                                <input name="group1" type="radio" id="enseignant" disabled="disabled"/>
-                                <label for="enseignant">Enseignant</label>
-                            </p>
-                            <p>
-                                <input name="group1" type="radio" id="entreprise" value ="entreprise"/>
-                                <label for="entreprise">Entreprise partenaire</label>
-                            </p> 
+                            <fieldset>
+                                <legend>Vous êtes :</legend>
+                                <p>
+                                    <input name="group1" type="radio" id="miagiste" value = "miagiste"/>
+                                    <label for="miagiste">Miagiste</label>
+                                </p>
+                                <p>
+                                    <input name="group1" type="radio" id="enseignant" disabled="disabled"/>
+                                    <label for="enseignant">Enseignant</label>
+                                </p>
+                                <p>
+                                    <input name="group1" type="radio" id="entreprise" value ="entreprise"/>
+                                    <label for="entreprise">Entreprise partenaire</label>
+                                </p> 
+                            </fieldset>
                         </div>
                         <div class="option_miagiste input-field col s12" id="option_miagiste" style="display: none">
                             <p>Date de naissance</p>

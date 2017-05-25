@@ -38,10 +38,17 @@
         <ul id="nav-mobile" class="side-nav">
             <li><a href="info-form.jsp">Infos pratiques</a></li>
             <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown2">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
-            <li><a href="vote-form.jsp">Voter</a></li>
+            <c:if test = "${sessionScope['user'] == true}">
+                <li><a href="vote-form.jsp">Voter</a></li>
+            </c:if>
             <li>|</li>
-            <li><a href="#connexion">Se connecter</a></li>
+            <c:if test = "${sessionScope['user'] != true}">
+                <li><a href="#connexion">Se connecter</a></li>
+            </c:if>
             <li><a href="participer-form.jsp">Participer</a></li>
+            <c:if test = "${sessionScope['user'] == true}">
+                <li><a href="ServletUsers?action=deconnexion" class="right"><i class="medium material-icons">power_settings_new</i></a></li>
+            </c:if>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">reorder</i></a>
     </div>
