@@ -73,7 +73,7 @@
                             <div class="file-field input-field">
                                 <div class="btn light-blue accent-3">
                                     <span>File</span>
-                                    <input type="file">
+                                       <input type="file" name="file1"><br>
                                 </div>
                                 <div class="file-path-wrapper">
                                     <input class="file-path validate" type="text" name="fichier" id="photo">
@@ -133,6 +133,7 @@
                     <input type="hidden" name="action" value="participer"/>  
                     <input class="btn waves-effect waves-light light-blue accent-3" type="submit" value="Envoyer" name="submit"/>
                 </form>
+                
             </div>
         </div>
     </body>
