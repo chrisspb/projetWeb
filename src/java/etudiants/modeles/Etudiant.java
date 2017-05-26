@@ -13,42 +13,54 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Christian
+ * @author perle
  */
 @Entity
-public class Etudiants implements Serializable {
+public class Etudiant implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String nom, prenom, mail, pass, naissance, photo;
-    private boolean diplome;
-
-     
-    public Etudiants(String nom, String prenom, String mail, String pass, String naissance, String photo, boolean diplome){
-        this.nom = nom;
-        this.prenom = prenom;
+    private String firstname;  
+    private String lastname;  
+    private String mail; 
+    private String pass;
+    private String naissance; 
+    private String photo;
+    private boolean diplome; 
+  
+       public Etudiant() {  
+    }  
+       
+       public Etudiant(int id){
+           this.id = id;
+       }
+  
+    public Etudiant(final String lastname, final String firstname, final String mail, final String pass, final String naissance, final String photo, final boolean diplome) {  
+        this.lastname = lastname;  
+        this.firstname = firstname;
         this.mail = mail;
         this.pass = pass;
         this.naissance = naissance;
         this.photo = photo;
         this.diplome = diplome;
-    }
-    
-    public String getNom() {
-        return nom;
+                
+    }  
+
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getMail() {
@@ -66,32 +78,6 @@ public class Etudiants implements Serializable {
     public void setPass(String pass) {
         this.pass = pass;
     }
-
-    public String getNaissance() {
-        return naissance;
-    }
-
-    public void setNaissance(String naissance) {
-        this.naissance = naissance;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public boolean isDiplome() {
-        return diplome;
-    }
-
-    public void setDiplome(boolean diplome) {
-        this.diplome = diplome;
-    }
-         
-   
 
     public int getId() {
         return id;
@@ -111,10 +97,10 @@ public class Etudiants implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Etudiants)) {
+        if (!(object instanceof Etudiant)) {
             return false;
         }
-        Etudiants other = (Etudiants) object;
+        Etudiant other = (Etudiant) object;
         if (this.id != other.id) {
             return false;
         }
@@ -123,7 +109,7 @@ public class Etudiants implements Serializable {
 
     @Override
     public String toString() {
-        return "etudiants.modeles.Etudiants[ id=" + id + " ]";
+        return "etudiants.modeles.Etudiant[ id=" + id + " ]";
     }
     
 }

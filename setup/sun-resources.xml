@@ -6,9 +6,9 @@
         <property name="portNumber" value="1527"/>
         <property name="databaseName" value="etudiants"/>
         <property name="User" value="root"/>
-        <property name="Password" value="admin"/>
+        <property name="Password" value="root"/>
         <property name="URL" value="jdbc:derby://localhost:1527/etudiants"/>
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="BaseEtudiants" object-type="user" pool-name="derby_net_etudiants_rootPool"/>
+    <jdbc-resource enabled="true" jndi-name="Base_Etudiant" object-type="user" pool-name="derby_net_etudiants_rootPool"/>
 </resources>

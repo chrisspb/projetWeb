@@ -10,16 +10,24 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;  
 import javax.persistence.PersistenceContext;  
 import javax.persistence.Query;  
-import etudiants.modeles.Etudiants;
+import etudiants.modeles.Etudiant;
 
 /**
  *
- * @author Christian
+ * @author perle
  */
 @Stateless
 public class GestionnaireEtudiants {
-    private EntityManager em;  
+    
+    @PersistenceContext  
+    private EntityManager em;
 
+    public Etudiant creeEtudiant(String lastname, String firstname, String mail, String pass, String naissance, String photo, boolean diplome){
+        Etudiant e = new Etudiant(lastname, firstname, mail, pass, naissance, photo, diplome);
+        em.persist(e);
+        return e;
+    }
+    
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }

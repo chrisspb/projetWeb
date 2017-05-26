@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 /* 
  * To change this template, choose Tools | Templates 
  * and open the template in the editor. 
@@ -25,7 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import etudiants.gestionnaires.GestionnaireEtudiants;
-import etudiants.modeles.Etudiants;
+import etudiants.modeles.Etudiant;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 import javax.ws.rs.Path;
@@ -84,25 +89,36 @@ public class ServletEtudiants extends HttpServlet {
             if (action.equals("participer")) {
                 // verification des parametres places dans la requete
                 boolean diplome = false;
+                // questions générales
                 String prenom = request.getParameter("prenom");
                 String nom = request.getParameter("nom");
                 String email = request.getParameter("email");
                 String etat = request.getParameter("group1");
                 System.out.println("Etat : " + etat);
                 String password = request.getParameter("password");
-                String naissance = request.getParameter("date_naiss");
-                String photo = request.getParameter("fichier");
-                String dip = request.getParameter("group2");
-                System.out.println("dip : " + dip);
+                
+                //étudiant
+                if(etat.equals("miagiste")){
+                    String naissance = request.getParameter("date_naiss");
+                    String photo = request.getParameter("fichier");
+                    String dip = request.getParameter("group2");
+                    System.out.println("dip : " + dip);
 
-                if (dip.equals("Ydiplome")) {
-                    diplome = true;
+                    if (dip.equals("Ydiplome")) {
+                        diplome = true;
+                    }
+                    
+                    Etudiant e = new Etudiant(nom, prenom, email, password, naissance, photo, diplome);
+                    //GestionnaireEtudiants ge = new GestionnaireEtudiants();
+                    //ge.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
+
+                    System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + photo + diplome);
                 }
-
-                //traitement des parametres
-                //gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
-                //Collection<Utilisa-teur> liste = gestionnaireUtilisateurs.getAllUsers(); 
-                System.out.println("Compte créé : " + nom + prenom + email + password + ", naissance " + naissance + photo + diplome);
+                
+                
+                
+                
+                
                 forwardTo = "index-form.jsp?";
                 message = "Liste des utilisateurs";
                 request.setAttribute("message", message);
