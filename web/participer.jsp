@@ -73,7 +73,7 @@
                             <div class="file-field input-field">
                                 <div class="btn light-blue accent-3">
                                     <span>File</span>
-                                       <input type="file" name="file1"><br>
+                                       <input type="file"><br>
                                 </div>
                                 <div class="file-path-wrapper">
                                     <input class="file-path validate" type="text" name="fichier" id="photo">

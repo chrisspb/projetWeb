@@ -164,7 +164,9 @@ public class ServletEtudiants extends HttpServlet {
         
         for(Part part : parts) {
             System.out.println("Name de part : " + part.getName());
-            if(part.getName().equals("file1")){
+            if(part.getName().equals("fichier")){
+                System.out.println("Fichier trouvé");
+                
                 printPart(part, out);
                 part.write(request.getParameter("nom"));
             }
