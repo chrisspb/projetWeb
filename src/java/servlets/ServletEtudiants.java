@@ -36,6 +36,7 @@ import javax.servlet.http.Part;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import participants.modeles.Entreprise;
 import participants.modeles.Participants;
 
 /**
@@ -43,11 +44,11 @@ import participants.modeles.Participants;
  * @author michel
  */
 @WebServlet(name = "ServletUsers", urlPatterns = {"/ServletUsers"})
-@MultipartConfig(location="/", fileSizeThreshold=1024*1024, maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5) 
+@MultipartConfig(location = "/", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 //FICHIER D'UPLOAD GENERE A LA RACINE DU PROJET GLASSFISH !
 public class ServletEtudiants extends HttpServlet {
     // ici injection de code ! On n'initialise pas ! 
-    
+
     private final static Logger LOGGER
             = Logger.getLogger(ServletEtudiants.class.getCanonicalName());
 
@@ -62,6 +63,8 @@ public class ServletEtudiants extends HttpServlet {
     public void setCo(boolean co) {
         this.co = co;
     }
+    HttpServletRequest request;
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -75,10 +78,9 @@ public class ServletEtudiants extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Pratique pour décider de l'action à faire  
-
-        response.setContentType("text/html;charset=UTF-8");
-        
         String action = request.getParameter("action");
+        response.setContentType("text/html;charset=UTF-8");
+
         String forwardTo = "";
         String message = "";
         HttpSession session = request.getSession(false);
@@ -88,6 +90,7 @@ public class ServletEtudiants extends HttpServlet {
         if (action != null) {
 
             if (action.equals("participer")) {
+                System.out.println("action : participer");
                 // verification des parametres places dans la requete
                 boolean diplome = false;
                 // questions générales
@@ -97,9 +100,10 @@ public class ServletEtudiants extends HttpServlet {
                 String etat = request.getParameter("group1");
                 System.out.println("Etat : " + etat);
                 String password = request.getParameter("password");
-                
+
                 //étudiant
-                if(etat.equals("miagiste")){
+                if (etat.equals("miagiste")) {
+                    System.out.println("miage");
                     String naissance = request.getParameter("date_naiss");
                     String photo = request.getParameter("fichier");
                     String dip = request.getParameter("group2");
@@ -108,17 +112,34 @@ public class ServletEtudiants extends HttpServlet {
                     if (dip.equals("Ydiplome")) {
                         diplome = true;
                     }
+                    
+                    saveFile(request, response);
+                    
                     Etudiant e = new Etudiant(nom, prenom, email, password, naissance, photo, diplome);
                     System.out.println(e.toString());
                     Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
 
                     System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + photo + diplome);
+                } else if (etat.equals("entreprise")) {
+                    System.out.println("Entreprise");
+                    String fonction = request.getParameter("fonction");
+                    String tel = request.getParameter("tel");
+                    String nomE = request.getParameter("nomE");
+                    String rueE = request.getParameter("rueE");
+                    String cp = request.getParameter("cpE");
+                    System.out.println("Code postal : " + cp);
+                    //int codePostal = Integer.parseInt(cp);
+                    String ville = request.getParameter("villeE");
+                    String secteur = request.getParameter("sectE");
+
+                    Entreprise ent = new Entreprise(nom, prenom, email, password,
+                            fonction, tel, nomE, rueE, cp, ville, secteur);
+                    System.out.println(ent.toString());
+
+                    Entreprise ent1 = gestionnaireEtudiants.creeEntreprise(nom, prenom, email, password, fonction, tel, nomE, rueE, cp, ville, secteur);
+
                 }
-                
-                
-                
-                
-                
+
                 forwardTo = "index-form.jsp?";
                 message = "Liste des utilisateurs";
                 request.setAttribute("message", message);
@@ -137,10 +158,7 @@ public class ServletEtudiants extends HttpServlet {
         // Après un forward, plus rien ne peut être exécuté après !  
     }
 
-
-
-
-@Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -157,37 +175,44 @@ public class ServletEtudiants extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        Collection<Part> parts = request.getParts();
-        out.write("<h2> Total parts : "+parts.size()+"</h2>");
         
-        for(Part part : parts) {
-            System.out.println("Name de part : " + part.getName());
-            if(part.getName().equals("fichier")){
-                System.out.println("Fichier trouvé");
-                
-                printPart(part, out);
-                part.write(request.getParameter("fichier"));
-            }
-        }
+
         processRequest(request, response);
     }
     
+    private void saveFile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        response.setContentType("text/html");
+        
+            PrintWriter out = response.getWriter();
+            Collection<Part> parts = request.getParts();
+            out.write("<h2> Total parts : " + parts.size() + "</h2>");
+
+            for (Part part : parts) {
+                System.out.println("Name de part : " + part.getName());
+                if (part.getName().equals("fichier")) {
+                    System.out.println("Fichier trouvé");
+
+                    printPart(part, out);
+                    part.write(request.getParameter("fichier"));
+                }
+            }
+        
+    }
+
     private void printPart(Part part, PrintWriter pw) {
         StringBuffer sb = new StringBuffer();
         sb.append("<p>");
-        sb.append("Name : "+part.getName());
+        sb.append("Name : " + part.getName());
         sb.append("<br>");
-        sb.append("Content Type : "+part.getContentType());
+        sb.append("Content Type : " + part.getContentType());
         sb.append("<br>");
-        sb.append("Size : "+part.getSize());
-        sb.append("<br>"); 
-    for(String header : part.getHeaderNames()) {
-        sb.append(header + " : "+part.getHeader(header));
+        sb.append("Size : " + part.getSize());
         sb.append("<br>");
-    }
-    sb.append("</p>");
-    pw.write(sb.toString());
+        for (String header : part.getHeaderNames()) {
+            sb.append(header + " : " + part.getHeader(header));
+            sb.append("<br>");
+        }
+        sb.append("</p>");
+        pw.write(sb.toString());
     }
 }
