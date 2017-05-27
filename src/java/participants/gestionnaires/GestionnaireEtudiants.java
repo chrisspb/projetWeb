@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package etudiants.gestionnaires;
+package participants.gestionnaires;
 
 import java.util.Collection;  
 import javax.ejb.Stateless;  
 import javax.persistence.EntityManager;  
 import javax.persistence.PersistenceContext;  
 import javax.persistence.Query;  
-import etudiants.modeles.Etudiant;
+import participants.modeles.Etudiant;
 
 /**
  *
@@ -22,8 +22,8 @@ public class GestionnaireEtudiants {
     @PersistenceContext  
     private EntityManager em;
 
-    public Etudiant creeEtudiant(String lastname, String firstname, String mail, String pass, String naissance, String photo, boolean diplome){
-        Etudiant e = new Etudiant(lastname, firstname, mail, pass, naissance, photo, diplome);
+    public Etudiant creeEtudiant(String naissance, String photo, boolean diplome){
+        Etudiant e = new Etudiant(naissance, photo, diplome);
         em.persist(e);
         return e;
     }

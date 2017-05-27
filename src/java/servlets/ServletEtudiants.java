@@ -29,13 +29,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import etudiants.gestionnaires.GestionnaireEtudiants;
-import etudiants.modeles.Etudiant;
+import participants.gestionnaires.GestionnaireEtudiants;
+import participants.modeles.Etudiant;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import participants.modeles.Participants;
 
 /**
  *
@@ -108,7 +109,8 @@ public class ServletEtudiants extends HttpServlet {
                         diplome = true;
                     }
                     
-                    Etudiant e = new Etudiant(nom, prenom, email, password, naissance, photo, diplome);
+                    Participants p = new Participants(nom, prenom, email, password, etat);
+                    Etudiant e = new Etudiant(naissance, photo, diplome);
                     //GestionnaireEtudiants ge = new GestionnaireEtudiants();
                     //ge.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
 
