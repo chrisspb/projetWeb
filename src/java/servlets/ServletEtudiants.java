@@ -108,11 +108,9 @@ public class ServletEtudiants extends HttpServlet {
                     if (dip.equals("Ydiplome")) {
                         diplome = true;
                     }
-                    
-                    Participants p = new Participants(nom, prenom, email, password, etat);
-                    Etudiant e = new Etudiant(naissance, photo, diplome);
-                    //GestionnaireEtudiants ge = new GestionnaireEtudiants();
-                    //ge.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
+                    Etudiant e = new Etudiant(nom, prenom, email, password, naissance, photo, diplome);
+                    System.out.println(e.toString());
+                    Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
 
                     System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + photo + diplome);
                 }
@@ -170,7 +168,7 @@ public class ServletEtudiants extends HttpServlet {
                 System.out.println("Fichier trouvé");
                 
                 printPart(part, out);
-                part.write(request.getParameter("nom"));
+                part.write(request.getParameter("fichier"));
             }
         }
         processRequest(request, response);

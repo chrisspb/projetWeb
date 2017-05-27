@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author perle
  */
 @Entity
-public class Etudiant implements Serializable {
+public class Etudiant implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,6 +24,11 @@ public class Etudiant implements Serializable {
     private String naissance; 
     private String photo;
     private boolean diplome; 
+    
+    // attributs participant
+    private String nom, prenom, mail, pass;
+
+    
   
        public Etudiant() {  
     }  
@@ -32,7 +37,11 @@ public class Etudiant implements Serializable {
            this.id = id;
        }
   
-    public Etudiant(final String naissance, final String photo, final boolean diplome) {  
+    public Etudiant(final String nom, final String prenom, final String mail, final String pass, final String naissance, final String photo, final boolean diplome) {  
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.pass = pass;
         this.naissance = naissance;
         this.photo = photo;
         this.diplome = diplome;
@@ -77,6 +86,37 @@ public class Etudiant implements Serializable {
         hash += (int) id;
         return hash;
     }
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
 
     @Override
     public boolean equals(Object object) {
@@ -93,7 +133,8 @@ public class Etudiant implements Serializable {
 
     @Override
     public String toString() {
-        return "etudiants.modeles.Etudiant[ id=" + id + " ]";
+        return "Etudiant{" + "id=" + id + ", naissance=" + naissance + ", photo=" + photo + ", diplome=" + diplome + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", pass=" + pass + '}';
     }
-    
+
+ 
 }
