@@ -4,6 +4,7 @@
     Author     : perle
 --%>
 
+<%@page import="miage.gestionnaires.GestionnaireMiage"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
