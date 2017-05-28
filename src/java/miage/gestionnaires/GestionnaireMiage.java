@@ -19,7 +19,6 @@ public class GestionnaireMiage {
 
     @PersistenceContext  
     private EntityManager em;  
-    private Miage m;
     
     public void listeMiage() {
         newMiage("Aix-Marseille");
