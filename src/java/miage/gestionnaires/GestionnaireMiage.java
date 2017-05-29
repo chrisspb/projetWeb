@@ -22,7 +22,7 @@ public class GestionnaireMiage {
     @PersistenceContext
     private EntityManager em;
 
-    public void listeMiage() {
+    /*public void listeMiage() {
         newMiage("Aix-Marseille");
         newMiage("Amiens");
         newMiage("Bordeaux");
@@ -42,7 +42,7 @@ public class GestionnaireMiage {
         newMiage("Paris - Sorbonne");
         newMiage("Rennes");
         newMiage("Toulouse");
-    }
+    }*/
 
     public Miage newMiage(String miage) {
         Miage m = new Miage(miage);
@@ -52,7 +52,7 @@ public class GestionnaireMiage {
 
     public Collection<Miage> getAllMiage() {
         // Exécution d'une requête équivalente à un select *  
-        Query q = em.createQuery("select m from Miage m group by m");
+        Query q = em.createQuery("select m from Miage m order by m");
         return q.getResultList();
     }
 }

@@ -6,6 +6,9 @@
 
 <%@page import="miage.gestionnaires.GestionnaireMiage"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -66,15 +69,15 @@
                             <div class="input-field col s12">
                                 <select id="choix_miage">
                                     <option value="" disabled selected>Choisissez votre MIAGE :</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
+                                    <c:forEach var="m" items="${requestScope['listeDesMiages']}">
+                                        <option value="${m.miage}">${m.miage}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                             <div class="file-field input-field">
                                 <div class="btn light-blue accent-3">
                                     <span>File</span>
-                                       <input type="file"><br>
+                                    <input type="file"><br>
                                 </div>
                                 <div class="file-path-wrapper">
                                     <input class="file-path validate" type="text" name="fichier" id="photo">
@@ -134,7 +137,7 @@
                     <input type="hidden" name="action" value="participer"/>  
                     <input class="btn waves-effect waves-light light-blue accent-3" type="submit" value="Envoyer" name="submit"/>
                 </form>
-                
+
             </div>
         </div>
     </body>

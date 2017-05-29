@@ -49,7 +49,8 @@ public class ServletMiage extends HttpServlet {
         if (action != null) {
 
             if (action.equals("lien_participer")) {
-                gestionnaireMiage.listeMiage();
+                Collection<Miage> liste = gestionnaireMiage.getAllMiage();
+                request.setAttribute("listeDesMiages", liste);
 
                 forwardTo = "participer-form.jsp?action=lien_participer";
                 message = "Liste des utilisateurs";

@@ -38,10 +38,14 @@
             </c:if>    
             <li><a href="info-form.jsp">Infos pratiques</a></li>
             <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown1">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
-            <li><a href="vote-form.jsp">Voter</a></li>
+            <c:if test = "${sessionScope['user'] == true}">
+                <li><a href="vote-form.jsp">Voter</a></li>
+            </c:if>
             <li>|</li>
-            <li><a href="#connexion">Se connecter</a></li>
-            <li><a href="ServletMiage?action=lien_participer">Participer</a></li>
+            <c:if test = "${sessionScope['user'] != true}">
+                <li><a href="#connexion">Se connecter</a></li>
+                <li><a href="ServletMiage?action=lien_participer">Participer</a></li>
+            </c:if>
             <c:if test = "${sessionScope['user'] != false}">
                 <li><a href="ServletParticipants?action=deconnexion">Se deconnecter</a></li> <!-- pourquoi ca s'affiche alors que c'est false ? -->
             </c:if>   
@@ -56,8 +60,8 @@
             <li>|</li>
             <c:if test = "${sessionScope['user'] != true}">
                 <li><a href="#connexion">Se connecter</a></li>
+                <li><a href="ServletMiage?action=lien_participer">Participer</a></li>
             </c:if>
-            <li><a href="ServletMiage?action=lien_participer">Participer</a></li>
             <c:if test = "${sessionScope['user'] == true}">
                 <li><a href="ServletUsers?action=deconnexion" class="right"><i class="medium material-icons">power_settings_new</i></a></li>
             </c:if>
