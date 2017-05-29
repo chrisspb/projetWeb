@@ -4,6 +4,8 @@
     Author     : perle
 --%>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+
 <ul id="dropdown1" class="dropdown-content">
     <li><a href="video-form.jsp">Vidéo</a></li>
     <li><a href="shirt-form.jsp">T-Shirt</a></li>
@@ -28,6 +30,9 @@
     <div class="nav-wrapper">
         <a href="index-form.jsp" class="brand-logo"><img src="resources/logo_jnm.ico" height="150px"/></a>
         <ul class="right hide-on-med-and-down">
+            <c:if test = "${sessionScope['connexionAdm'] == true}">
+                <li><a href="admin-form.jsp">Page d'administration</a></li>
+            </c:if>
             <li><a href="info-form.jsp">Infos pratiques</a></li>
             <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown1">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a href="vote-form.jsp">Voter</a></li>

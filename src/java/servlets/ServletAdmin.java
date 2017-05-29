@@ -6,6 +6,7 @@
 package servlets;
 
 import admins.gestionnaires.GestionnaireAdministrateurs;
+import admins.modeles.Administrateurs;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
@@ -54,21 +55,23 @@ public class ServletAdmin extends HttpServlet {
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
                 System.out.println("kk - " + email + password);
-                boolean co = gestionnaireAdministrateurs.connexionAdm(email, password);
-                if(co){
-                    System.out.println("Connexion OK");  
-                    session = request.getSession(true);
-                    session.setAttribute("connexion", true);
-                    System.out.println("kk - " + session.getAttribute("user"));
-                    forwardTo = "index-form.jsp?";   
-                    message = "Vous êtes maintenant connecté(e)";
-                    request.setAttribute("message", message);
-                } else {
+                Collection adm = gestionnaireAdministrateurs.getOneAdm(email, password);
+                if(adm.size() == 0){
                     System.out.println("Login - password incorrect"); 
                     session = request.getSession(false);
                     session.setAttribute("user", false);
                     forwardTo = "index-form.jsp?";  
                     message = "Identifiants incorrects";
+                    request.setAttribute("message", message);
+                    
+                } else {
+                    System.out.println("Connexion OK");  
+                    session = request.getSession(true);
+                    //Administrateurs a = (Administrateurs) adm.iterator().next();
+                    session.setAttribute("connexionAdm", true);
+                    System.out.println("kk - " + session.getAttribute("user"));
+                    forwardTo = "index-form.jsp?";   
+                    message = "Vous êtes maintenant connecté(e)";
                     request.setAttribute("message", message);
                 }
         }
