@@ -7,7 +7,9 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +24,7 @@ import miage.modeles.Miage;
  */
 @WebServlet(name = "ServletMiage", urlPatterns = {"/ServletMiage"})
 public class ServletMiage extends HttpServlet {
-    
+
     @EJB
     private GestionnaireMiage gestionnaireMiage;
 
@@ -39,8 +41,30 @@ public class ServletMiage extends HttpServlet {
             throws ServletException, IOException {
 
         response.setContentType("text/html;charset=UTF-8");
-        
-        gestionnaireMiage.listeMiage();
+
+        String action = request.getParameter("action");
+        String forwardTo = "";
+        String message = "";
+
+        if (action != null) {
+
+            if (action.equals("lien_participer")) {
+                gestionnaireMiage.listeMiage();
+
+                forwardTo = "participer-form.jsp?action=lien_participer";
+                message = "Liste des utilisateurs";
+                request.setAttribute("message", message);
+
+            } else {
+                forwardTo = "index.jsp?action=todo";
+                message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";
+            }
+        }
+
+        System.out.println("forward : " + forwardTo);
+        RequestDispatcher dp = request.getRequestDispatcher(forwardTo);
+        dp.forward(request, response);
+        // Après un forward, plus rien ne peut être exécuté après !  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

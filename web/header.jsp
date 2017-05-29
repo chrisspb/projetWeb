@@ -33,7 +33,7 @@
             <li><a href="vote-form.jsp">Voter</a></li>
             <li>|</li>
             <li><a href="#connexion">Se connecter</a></li>
-            <li><a href="participer-form.jsp">Participer</a></li>
+            <li><a href="ServletMiage?action=lien_participer">Participer</a></li>
         </ul>
         <ul id="nav-mobile" class="side-nav">
             <li><a href="info-form.jsp">Infos pratiques</a></li>
@@ -45,7 +45,7 @@
             <c:if test = "${sessionScope['user'] != true}">
                 <li><a href="#connexion">Se connecter</a></li>
             </c:if>
-            <li><a href="participer-form.jsp">Participer</a></li>
+            <li><a href="ServletMiage?action=lien_participer">Participer</a></li>
             <c:if test = "${sessionScope['user'] == true}">
                 <li><a href="ServletUsers?action=deconnexion" class="right"><i class="medium material-icons">power_settings_new</i></a></li>
             </c:if>

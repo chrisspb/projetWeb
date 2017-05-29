@@ -15,15 +15,18 @@ import javax.persistence.PersistenceContext;
  * @author perle
  */
 @Stateless
-public class GesionnaireAdministrateurs {
+public class GestionnaireAdministrateurs {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    
-    @PersistenceContext  
+    @PersistenceContext
     private EntityManager em;
-    
-    public Administrateurs creeAdmin(String email, String password){
+
+    public void adminTest() {
+        creeAdmin("admin@gmail.com", "admin");
+    }
+
+    public Administrateurs creeAdmin(String email, String password) {
         Administrateurs a = new Administrateurs(email, password);
         em.persist(a);
         return a;

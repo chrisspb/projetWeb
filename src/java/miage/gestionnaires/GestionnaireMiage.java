@@ -5,9 +5,11 @@
  */
 package miage.gestionnaires;
 
+import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import miage.modeles.Miage;
 
 /**
@@ -17,9 +19,9 @@ import miage.modeles.Miage;
 @Stateless
 public class GestionnaireMiage {
 
-    @PersistenceContext  
-    private EntityManager em;  
-    
+    @PersistenceContext
+    private EntityManager em;
+
     public void listeMiage() {
         newMiage("Aix-Marseille");
         newMiage("Amiens");
@@ -41,10 +43,16 @@ public class GestionnaireMiage {
         newMiage("Rennes");
         newMiage("Toulouse");
     }
-  
+
     public Miage newMiage(String miage) {
         Miage m = new Miage(miage);
         em.persist(m);
         return m;
+    }
+
+    public Collection<Miage> getAllMiage() {
+        // Exécution d'une requête équivalente à un select *  
+        Query q = em.createQuery("select m from Miage m group by m");
+        return q.getResultList();
     }
 }
