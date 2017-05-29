@@ -17,7 +17,7 @@
                 <div class="card-content">
                     <span class="card-title">Inscrire un enseignant</span>
                     </br>
-                    <form class="col s12" action="ServletUsers" method="post">
+                    <form class="col s12" action="ServletEnseignants" method="post">
                         <div class="row">
                             <div class="input-field col s6">
                                 <i class="material-icons prefix">perm_identity</i>
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         </br>
-                        <input type="hidden" name="action" value="inscrire_enseignant"/>  
+                        <input type="hidden" name="action" value="inscriptionEnseignants"/>  
                         <input class="btn waves-effect waves-light light-blue accent-3" type="submit" value="Inscrire" name="submit"/>
                     </form>
                 </div>
