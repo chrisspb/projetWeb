@@ -5,14 +5,20 @@
  */
 package servlets;
 
+import admins.gestionnaires.GestionnaireAdministrateurs;
+import enseignants.gestionnaires.GestionnaireEnseignants;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
+import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import participants.gestionnaires.GestionnaireEtudiants;
 
 /**
  *
@@ -20,6 +26,13 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "ServletParticipants", urlPatterns = {"/ServletParticipants"})
 public class ServletParticipants extends HttpServlet {
+
+    @EJB
+    private GestionnaireEtudiants gestionnaireEtudiants;
+    @EJB
+    private GestionnaireEnseignants gestionnaireEnseignant;
+    @EJB
+    private GestionnaireAdministrateurs gestionnaireAdministrateurs;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,15 +45,84 @@ public class ServletParticipants extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String action = request.getParameter("action");
+        String action = request.getParameter("action");
         String forwardTo = "";
         String message = "";
-        
+        Boolean connexion = false;
+
         HttpSession session = request.getSession();
-        
-        
+
+        System.out.println("KKKKKKKK");
+        System.out.println("Action : " + action);
+
+        if (action.equals("connexion")) {
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            System.out.println("kk - " + email + password);
+            Collection enseignant = gestionnaireEnseignant.getOneEnseignant(email, password);
+            System.out.println("taille collection enseignant : " + enseignant.size());
+            if (enseignant.size() != 0) {
+                System.out.println("Connexion de l'enseignant OK !");
+                session.setAttribute("connexionEnseignant", true);
+                session.setAttribute("user", true);
+                forwardTo = "index-form.jsp?";
+                message = "Vous êtes maintenant connecté(e)";
+                request.setAttribute("message", message);
+                connexion = true;
+            }
+
+            Collection adm = gestionnaireAdministrateurs.getOneAdm(email, password);
+            if (adm.size() != 0) {
+                System.out.println("Connexion OK");
+                session = request.getSession(true);
+                //Administrateurs a = (Administrateurs) adm.iterator().next();
+                session.setAttribute("connexionAdm", true);
+                session.setAttribute("user", true);
+                System.out.println("kk - " + session.getAttribute("user"));
+                forwardTo = "index-form.jsp?";
+                message = "Vous êtes maintenant connecté(e)";
+                request.setAttribute("message", message);
+                connexion = true;
+            }
+            
+            Collection etu = gestionnaireEtudiants.getOneEtudiant(email, password);
+            System.out.println("taille collection etudiant : " + etu.size());
+            if(etu.size() != 0){
+                System.out.println("Connexion OK");
+                session = request.getSession(true);
+                //Administrateurs a = (Administrateurs) adm.iterator().next();
+                session.setAttribute("connexionEtudiant", true);
+                session.setAttribute("user", true);
+                System.out.println("kk - " + session.getAttribute("user"));
+                forwardTo = "index-form.jsp?";
+                message = "Vous êtes maintenant connecté(e)";
+                request.setAttribute("message", message);
+                connexion = true;
+            }
+
+            if (!connexion) {
+                session.setAttribute("user", false);
+                forwardTo = "index-form.jsp?";
+                message = "Identifiants incorrects";
+                request.setAttribute("message", message);
+            }
+
         }
 
+        if (action.equals("deconnexion")) {
+            System.out.println("Déconnexion absolue");
+            session.setAttribute("connexionEnseignant", false);
+            session.setAttribute("connexionAdm", false);
+            session.setAttribute("user", false);
+            forwardTo = "index-form.jsp?";
+                message = "Vous venez de vous déconnecter";
+                request.setAttribute("message", message);
+        }
+        System.out.println("forward : " + forwardTo);
+        RequestDispatcher dp = request.getRequestDispatcher(forwardTo);
+        dp.forward(request, response);
+
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

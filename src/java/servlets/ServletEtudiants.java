@@ -120,6 +120,10 @@ public class ServletEtudiants extends HttpServlet {
                     Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
 
                     System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + photo + diplome);
+                    
+                    session.setAttribute("connexionEtudiant", true);
+                session.setAttribute("user", true);
+                    
                 } else if (etat.equals("entreprise")) {
                     System.out.println("Entreprise");
                     String fonction = request.getParameter("fonction");
@@ -141,13 +145,10 @@ public class ServletEtudiants extends HttpServlet {
                 }
 
                 forwardTo = "index-form.jsp?";
-                message = "Liste des utilisateurs";
+                message = "Vous êtes maintenant connecté(e)";
                 request.setAttribute("message", message);
 
-            } else {
-                forwardTo = "index.jsp?action=todo";
-                message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";
-            }
+            } 
             //getServletContext().getRequestDispatcher("/index-form.jsp").forward(  
             //    request, response);
         }

@@ -31,14 +31,21 @@
         <a href="index-form.jsp" class="brand-logo"><img src="resources/logo_jnm.ico" height="150px"/></a>
         <ul class="right hide-on-med-and-down">
             <c:if test = "${sessionScope['connexionAdm'] == true}">
-                <li><a href="admin-form.jsp">Page d'administration</a></li>
+                <li><a href="admin-form.jsp" style='color:red;'><b>Page d'administration</b></a></li>
             </c:if>
+            <c:if test = "${sessionScope['connexionEnseignant'] == true}">
+                <li><a href="admin-form.jsp" style='color:red;'><b>Valider les inscriptions</b></a></li>
+            </c:if>    
             <li><a href="info-form.jsp">Infos pratiques</a></li>
             <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown1">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a href="vote-form.jsp">Voter</a></li>
             <li>|</li>
             <li><a href="#connexion">Se connecter</a></li>
             <li><a href="ServletMiage?action=lien_participer">Participer</a></li>
+            <c:if test = "${sessionScope['user'] != false}">
+                <li><a href="ServletParticipants?action=deconnexion">Se deconnecter</a></li> <!-- pourquoi ca s'affiche alors que c'est false ? -->
+            </c:if>   
+            
         </ul>
         <ul id="nav-mobile" class="side-nav">
             <li><a href="info-form.jsp">Infos pratiques</a></li>
@@ -62,7 +69,7 @@
 <div id="connexion" class="modal">
     <div class="modal-content center-align">
         <h4>Se connecter</h4>
-        <form class="s12" action="ServletAdmin" method="post">
+        <form class="s12" action="ServletParticipants" method="post">
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>

@@ -26,6 +26,11 @@ public class GestionnaireEnseignants {
     // "Insert Code > Add Business Method")
     @PersistenceContext
     private EntityManager em;
+    
+    public Collection<Enseignant> getOneEnseignant(String email, String pass) {
+        Query q = em.createQuery("select e from Enseignant e where e.mail = \"" + email + "\" AND e.pass = \"" + pass + "\"");
+        return q.getResultList();
+    }
 
     public Enseignant creeEnseignant(String nom, String prenom, String mail, String pass) {
         Enseignant e = new Enseignant(nom, prenom, mail, pass);

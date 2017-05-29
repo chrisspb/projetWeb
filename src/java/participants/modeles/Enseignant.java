@@ -29,6 +29,11 @@ public class Enseignant implements Serializable {
         
     }
     
+    public Enseignant(String email, String pass){
+        this.mail = email;
+        this.pass = pass;
+    }
+    
     public Enseignant(final String nom, final String prenom, final String mail, final String pass) {
         this.nom = nom;
         this.prenom = prenom;

@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;  
 import javax.persistence.PersistenceContext;  
 import javax.persistence.Query;  
+import participants.modeles.Enseignant;
 import participants.modeles.Entreprise;
 import participants.modeles.Etudiant;
 
@@ -20,7 +21,7 @@ import participants.modeles.Etudiant;
 @Stateless
 public class GestionnaireEtudiants {
     
-    @PersistenceContext  
+    @PersistenceContext   
     private EntityManager em;
 
     public Etudiant creeEtudiant(String nom, String prenom, String email, String password, String naissance, String photo, boolean diplome){
@@ -34,6 +35,11 @@ public class GestionnaireEtudiants {
         Entreprise ent = new Entreprise(nom, prenom, mail, pass, fonction, tel, nomE, rueE, codePostal, villeE, secteurE);
         em.persist(ent);
         return ent;
+    }
+    
+    public Collection<Etudiant> getOneEtudiant(String email, String pass) {
+        Query q = em.createQuery("select etu from Etudiant etu where etu.mail = \"" + email + "\" AND etu.pass = \"" + pass + "\"");
+        return q.getResultList();
     }
     
     // Add business logic below. (Right-click in editor and choose

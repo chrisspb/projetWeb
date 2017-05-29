@@ -33,10 +33,11 @@ public class Etudiant implements Serializable{
        public Etudiant() {  
     }  
        
-       public Etudiant(int id){
-           this.id = id;
-       }
-  
+    public Etudiant(String mail, String pass){
+        this.mail = mail;
+        this.pass = pass;
+    }
+    
     public Etudiant(final String nom, final String prenom, final String mail, final String pass, final String naissance, final String photo, final boolean diplome) {  
         this.nom = nom;
         this.prenom = prenom;
