@@ -57,7 +57,7 @@
 <div id="connexion" class="modal">
     <div class="modal-content center-align">
         <h4>Se connecter</h4>
-        <form class="s12" action="ServletUsers" method="post">
+        <form class="s12" action="ServletAdmin" method="post">
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>

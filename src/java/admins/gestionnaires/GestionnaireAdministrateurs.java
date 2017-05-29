@@ -7,8 +7,10 @@ package admins.gestionnaires;
 
 import javax.ejb.Stateless;
 import admins.modeles.Administrateurs;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -31,4 +33,16 @@ public class GestionnaireAdministrateurs {
         em.persist(a);
         return a;
     }
+    public boolean connexionAdm(String email, String pass){
+        Query q = em.createQuery("select a from Administrateurs a where a.mail = \"" + email + "\" AND a.pass = \"" + pass + "\"");
+        System.out.println("la requete est passee");
+        List verif = q.getResultList();
+        if(verif.size() != 0){
+            System.out.println("Connexion OK"); 
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 }
