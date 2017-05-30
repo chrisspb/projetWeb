@@ -29,15 +29,14 @@ public class Etudiant implements Serializable{
     // attributs participant
     private String nom, prenom, mail, pass;
 
-    
   
-       public Etudiant() {  
+    public Etudiant() {  
     }  
        
     public Etudiant(String mail, String pass){
         this.mail = mail;
         this.pass = pass;
-    }
+    } 
     
     public Etudiant(final String nom, final String prenom, final String mail, final String pass, final String naissance, final String miage, final String photo, final boolean diplome) {  
         this.nom = nom;

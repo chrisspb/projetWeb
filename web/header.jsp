@@ -38,7 +38,7 @@
             </c:if>    
             <li><a href="info-form.jsp">Infos pratiques</a></li>
             <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown1">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
-            <c:if test = "${sessionScope['user'] == true} & ${!sessionScope['connexionAdm'] == true}">
+            <c:if test = "${sessionScope['connexionEtudiant'] == true}">
                 <li><a href="vote-form.jsp">Voter</a></li>
             </c:if>
             <li>|</li>
@@ -46,7 +46,7 @@
                 <li><a href="#connexion">Se connecter</a></li>
                 <li><a href="ServletMiage?action=lien_participer">Participer</a></li>
             </c:if>
-            <c:if test = "${sessionScope['user'] != false}">
+            <c:if test = "${sessionScope['user'] == true}">
                 <li><a href="ServletParticipants?action=deconnexion">Se déconnecter</a></li>
             </c:if>   
             
@@ -60,7 +60,7 @@
             </c:if>  
             <li><a href="info-form.jsp">Infos pratiques</a></li>
             <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown2">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
-            <c:if test = "${sessionScope['user'] == true} & ${!sessionScope['connexionAdm'] == true}">
+            <c:if test = "${sessionScope['connexionEtudiant'] == true}">
                 <li><a href="vote-form.jsp">Voter</a></li>
             </c:if>
             <li>|</li>

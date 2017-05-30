@@ -84,10 +84,10 @@ public class ServletParticipants extends HttpServlet {
                 request.setAttribute("message", message);
                 connexion = true;
             }
-            
+
             Collection etu = gestionnaireEtudiants.getOneEtudiant(email, password);
             System.out.println("taille collection etudiant : " + etu.size());
-            if(etu.size() != 0){
+            if (etu.size() != 0) {
                 System.out.println("Connexion OK");
                 session = request.getSession(true);
                 //Administrateurs a = (Administrateurs) adm.iterator().next();
@@ -113,10 +113,11 @@ public class ServletParticipants extends HttpServlet {
             System.out.println("Déconnexion absolue");
             session.setAttribute("connexionEnseignant", false);
             session.setAttribute("connexionAdm", false);
+            session.setAttribute("connexionEtudiant", false);
             session.setAttribute("user", false);
             forwardTo = "index-form.jsp?";
-                message = "Vous venez de vous déconnecter";
-                request.setAttribute("message", message);
+            message = "Vous venez de vous déconnecter";
+            request.setAttribute("message", message);
         }
         System.out.println("forward : " + forwardTo);
         RequestDispatcher dp = request.getRequestDispatcher(forwardTo);

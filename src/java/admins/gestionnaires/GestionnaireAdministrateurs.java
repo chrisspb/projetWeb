@@ -25,9 +25,9 @@ public class GestionnaireAdministrateurs {
     @PersistenceContext
     private EntityManager em;
 
-    public void adminTest() {
+    /*public void adminTest() {
         creeAdmin("admin@gmail.com", "admin");
-    }
+    }*/
 
     public Administrateurs creeAdmin(String email, String password) {
         Administrateurs a = new Administrateurs(email, password);

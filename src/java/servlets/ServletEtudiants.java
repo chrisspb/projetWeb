@@ -47,13 +47,15 @@ import participants.modeles.Participants;
 @MultipartConfig(location = "/", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 //FICHIER D'UPLOAD GENERE A LA RACINE DU PROJET GLASSFISH !
 public class ServletEtudiants extends HttpServlet {
+    
+    @EJB
+    private GestionnaireEtudiants gestionnaireEtudiants;
+
     // ici injection de code ! On n'initialise pas ! 
 
     private final static Logger LOGGER
             = Logger.getLogger(ServletEtudiants.class.getCanonicalName());
 
-    @EJB
-    private GestionnaireEtudiants gestionnaireEtudiants;
     private boolean co = false;
 
     public boolean isCo() {
@@ -64,7 +66,6 @@ public class ServletEtudiants extends HttpServlet {
         this.co = co;
     }
     HttpServletRequest request;
-    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -113,18 +114,20 @@ public class ServletEtudiants extends HttpServlet {
                     if (dip.equals("Ydiplome")) {
                         diplome = true;
                     }
-                    
+
                     saveFile(request, response);
-                    
+
                     Etudiant e = new Etudiant(nom, prenom, email, password, naissance, miage, photo, diplome);
                     System.out.println(e.toString());
+                    //Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
+
                     Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, miage, photo, diplome);
 
                     System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + photo + diplome);
-                    
+
                     session.setAttribute("connexionEtudiant", true);
-                session.setAttribute("user", true);
-                    
+                    session.setAttribute("user", true);
+
                 } else if (etat.equals("entreprise")) {
                     System.out.println("Entreprise");
                     String fonction = request.getParameter("fonction");
@@ -149,7 +152,7 @@ public class ServletEtudiants extends HttpServlet {
                 message = "Vous êtes maintenant connecté(e)";
                 request.setAttribute("message", message);
 
-            } 
+            }
             //getServletContext().getRequestDispatcher("/index-form.jsp").forward(  
             //    request, response);
         }
@@ -177,28 +180,27 @@ public class ServletEtudiants extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
 
         processRequest(request, response);
     }
-    
-    private void saveFile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+    private void saveFile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        
-            PrintWriter out = response.getWriter();
-            Collection<Part> parts = request.getParts();
-            out.write("<h2> Total parts : " + parts.size() + "</h2>");
 
-            for (Part part : parts) {
-                System.out.println("Name de part : " + part.getName());
-                if (part.getName().equals("fichier")) {
-                    System.out.println("Fichier trouvé");
+        PrintWriter out = response.getWriter();
+        Collection<Part> parts = request.getParts();
+        out.write("<h2> Total parts : " + parts.size() + "</h2>");
 
-                    printPart(part, out);
-                    part.write(request.getParameter("fichier"));
-                }
+        for (Part part : parts) {
+            System.out.println("Name de part : " + part.getName());
+            if (part.getName().equals("fichier")) {
+                System.out.println("Fichier trouvé");
+
+                printPart(part, out);
+                part.write(request.getParameter("fichier"));
             }
-        
+        }
+
     }
 
     private void printPart(Part part, PrintWriter pw) {
