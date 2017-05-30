@@ -24,8 +24,8 @@ public class GestionnaireEtudiants {
     @PersistenceContext   
     private EntityManager em;
 
-    public Etudiant creeEtudiant(String nom, String prenom, String email, String password, String naissance, String photo, boolean diplome){
-        Etudiant e = new Etudiant(nom, prenom, email, password, naissance, photo, diplome);
+    public Etudiant creeEtudiant(String nom, String prenom, String email, String password, String naissance, String miage, String photo, boolean diplome){
+        Etudiant e = new Etudiant(nom, prenom, email, password, naissance, miage, photo, diplome);
         em.persist(e);
         return e;
     }

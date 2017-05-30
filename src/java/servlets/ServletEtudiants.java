@@ -105,6 +105,7 @@ public class ServletEtudiants extends HttpServlet {
                 if (etat.equals("miagiste")) {
                     System.out.println("miage");
                     String naissance = request.getParameter("date_naiss");
+                    String miage = request.getParameter("choix_miage");
                     String photo = request.getParameter("fichier");
                     String dip = request.getParameter("group2");
                     System.out.println("dip : " + dip);
@@ -115,9 +116,9 @@ public class ServletEtudiants extends HttpServlet {
                     
                     saveFile(request, response);
                     
-                    Etudiant e = new Etudiant(nom, prenom, email, password, naissance, photo, diplome);
+                    Etudiant e = new Etudiant(nom, prenom, email, password, naissance, miage, photo, diplome);
                     System.out.println(e.toString());
-                    Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
+                    Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, miage, photo, diplome);
 
                     System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + photo + diplome);
                     

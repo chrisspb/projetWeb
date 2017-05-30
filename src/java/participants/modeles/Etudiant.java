@@ -21,7 +21,8 @@ public class Etudiant implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String naissance; 
+    private String naissance;
+    private String miage;
     private String photo;
     private boolean diplome; 
     
@@ -38,16 +39,25 @@ public class Etudiant implements Serializable{
         this.pass = pass;
     }
     
-    public Etudiant(final String nom, final String prenom, final String mail, final String pass, final String naissance, final String photo, final boolean diplome) {  
+    public Etudiant(final String nom, final String prenom, final String mail, final String pass, final String naissance, final String miage, final String photo, final boolean diplome) {  
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.pass = pass;
         this.naissance = naissance;
+        this.miage = miage;
         this.photo = photo;
         this.diplome = diplome;
                 
     }  
+
+    public String getMiage() {
+        return miage;
+    }
+
+    public void setMiage(String miage) {
+        this.miage = miage;
+    }
 
     public String getNaissance() {
         return naissance;

@@ -67,7 +67,7 @@
                             <p>Date de naissance</p>
                             <input type="date" class="datepicker" id="date_naiss" name="date_naiss">
                             <div class="input-field col s12">
-                                <select id="choix_miage">
+                                <select id="choix_miage" name="choix_miage">
                                     <option value="" disabled selected>Choisissez votre MIAGE :</option>
                                     <c:forEach var="m" items="${requestScope['listeDesMiages']}">
                                         <option value="${m.miage}">${m.miage}</option>
