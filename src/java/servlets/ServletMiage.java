@@ -56,7 +56,17 @@ public class ServletMiage extends HttpServlet {
                 message = "Liste des utilisateurs";
                 request.setAttribute("message", message);
 
-            } else {
+            }
+            else if (action.equals("lien_admin")) {
+                Collection<Miage> liste = gestionnaireMiage.getAllMiage();
+                request.setAttribute("listeDesMiages", liste);
+
+                forwardTo = "admin-form.jsp?action=lien_admin";
+                message = "Liste des utilisateurs";
+                request.setAttribute("message", message);
+
+            }
+            else {
                 forwardTo = "index.jsp?action=todo";
                 message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";
             }

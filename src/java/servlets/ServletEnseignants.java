@@ -24,10 +24,9 @@ import participants.modeles.Enseignant;
  */
 @WebServlet(name = "ServletEnseignants", urlPatterns = {"/ServletEnseignants"})
 public class ServletEnseignants extends HttpServlet {
-
-    @EJB
-    private GestionnaireEnseignants gestionnaireEnseignant;
     
+    @EJB
+    private GestionnaireEnseignants gestionnaireEnseignants;
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -56,8 +55,12 @@ public class ServletEnseignants extends HttpServlet {
             String nom = request.getParameter("nom");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            Enseignant ens = gestionnaireEnseignant.creeEnseignant(nom, prenom, email, password);
+            String miage = request.getParameter("choix_miage");
+            Enseignant ens = gestionnaireEnseignants.creeEnseignant(nom, prenom, email, password, miage);
             forwardTo = "index-form.jsp?";
+            message = "Enseignant créé";
+            request.setAttribute("message", message);
+            
             RequestDispatcher dp = request.getRequestDispatcher(forwardTo);
             dp.forward(request, response);
         }

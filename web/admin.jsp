@@ -4,7 +4,11 @@
     Author     : perle
 --%>
 
+<%@page import="miage.gestionnaires.GestionnaireMiage"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,8 +34,8 @@
                             </div>
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">email</i>
-                                <input id="icon_email" type="text" class="validate" name="email">
-                                <label for="icon_email" class="">Email</label>
+                                <input id="icon_email" type="email" class="validate" name="email" required>
+                                <label for="icon_email" data-error="email non valide" data-success="email valide" class="">Email</label>
                             </div>
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">lock</i>
@@ -53,6 +57,15 @@
                                     <input name="group1" type="radio" id="entreprise" disabled="disabled"/>
                                     <label for="entreprise">Entreprise partenaire</label>
                                 </p> 
+                            </div>
+
+                            <div class="input-field col s12">
+                                <select id="choix_miage" name="choix_miage">
+                                    <option value="" disabled selected>MIAGE de l'enseignant :</option>
+                                    <c:forEach var="m" items="${requestScope['listeDesMiages']}">
+                                        <option value="${m.miage}">${m.miage}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
                         </div>
                         </br>

@@ -30,7 +30,7 @@ public class ServletParticipants extends HttpServlet {
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
     @EJB
-    private GestionnaireEnseignants gestionnaireEnseignant;
+    private GestionnaireEnseignants gestionnaireEnseignants;
     @EJB
     private GestionnaireAdministrateurs gestionnaireAdministrateurs;
 
@@ -59,7 +59,7 @@ public class ServletParticipants extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             System.out.println("kk - " + email + password);
-            Collection enseignant = gestionnaireEnseignant.getOneEnseignant(email, password);
+            Collection enseignant = gestionnaireEnseignants.getOneEnseignant(email, password);
             System.out.println("taille collection enseignant : " + enseignant.size());
             if (enseignant.size() != 0) {
                 System.out.println("Connexion de l'enseignant OK !");

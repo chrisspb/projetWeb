@@ -32,8 +32,8 @@ public class GestionnaireEnseignants {
         return q.getResultList();
     }
 
-    public Enseignant creeEnseignant(String nom, String prenom, String mail, String pass) {
-        Enseignant e = new Enseignant(nom, prenom, mail, pass);
+    public Enseignant creeEnseignant(String nom, String prenom, String mail, String pass, String miage) {
+        Enseignant e = new Enseignant(nom, prenom, mail, pass, miage);
         em.persist(e);
         return e;
     }

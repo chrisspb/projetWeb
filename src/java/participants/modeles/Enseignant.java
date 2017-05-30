@@ -22,7 +22,7 @@ public class Enseignant implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String nom, prenom, mail, pass;
+    private String nom, prenom, mail, pass, miage;
 
     
     public Enseignant(){
@@ -34,11 +34,20 @@ public class Enseignant implements Serializable {
         this.pass = pass;
     }
     
-    public Enseignant(final String nom, final String prenom, final String mail, final String pass) {
+    public Enseignant(final String nom, final String prenom, final String mail, final String pass, final String miage) {
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.pass = pass;
+        this.miage = miage;
+    }
+
+    public String getMiage() {
+        return miage;
+    }
+
+    public void setMiage(String miage) {
+        this.miage = miage;
     }
     
     public Long getId() {
