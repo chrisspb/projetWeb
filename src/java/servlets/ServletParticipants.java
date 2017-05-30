@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import participants.gestionnaires.GestionnaireEtudiants;
+import participants.modeles.Enseignant;
 
 /**
  *
@@ -26,13 +27,14 @@ import participants.gestionnaires.GestionnaireEtudiants;
  */
 @WebServlet(name = "ServletParticipants", urlPatterns = {"/ServletParticipants"})
 public class ServletParticipants extends HttpServlet {
-    
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
     @EJB
     private GestionnaireEnseignants gestionnaireEnseignants;
     @EJB
     private GestionnaireAdministrateurs gestionnaireAdministrateurs;
+    
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -60,11 +62,15 @@ public class ServletParticipants extends HttpServlet {
             String password = request.getParameter("password");
             System.out.println("kk - " + email + password);
             Collection enseignant = gestionnaireEnseignants.getOneEnseignant(email, password);
+            
             System.out.println("taille collection enseignant : " + enseignant.size());
             if (enseignant.size() != 0) {
                 System.out.println("Connexion de l'enseignant OK !");
+                Enseignant ens = (Enseignant) enseignant.iterator().next();
                 session.setAttribute("connexionEnseignant", true);
                 session.setAttribute("user", true);
+                System.out.println("Enseignant placé en attribut de session : " + ens);
+                session.setAttribute("enseignant", ens);
                 forwardTo = "index-form.jsp?";
                 message = "Vous êtes maintenant connecté(e)";
                 request.setAttribute("message", message);
@@ -115,6 +121,7 @@ public class ServletParticipants extends HttpServlet {
             session.setAttribute("connexionAdm", false);
             session.setAttribute("connexionEtudiant", false);
             session.setAttribute("user", false);
+            session.invalidate();
             forwardTo = "index-form.jsp?";
             message = "Vous venez de vous déconnecter";
             request.setAttribute("message", message);

@@ -38,5 +38,9 @@ public class GestionnaireEnseignants {
         return e;
     }
 
+    public Collection<Enseignant> getMiageEnseignant(){
+        Query q = em.createQuery("select e.miage from Enseignant e");
+        return q.getResultList();
+    }
     
 }

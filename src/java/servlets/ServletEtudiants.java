@@ -47,9 +47,9 @@ import participants.modeles.Participants;
 @MultipartConfig(location = "/", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 //FICHIER D'UPLOAD GENERE A LA RACINE DU PROJET GLASSFISH !
 public class ServletEtudiants extends HttpServlet {
-    
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
+    
     
     // ici injection de code ! On n'initialise pas ! 
 

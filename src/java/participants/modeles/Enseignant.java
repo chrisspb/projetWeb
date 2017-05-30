@@ -80,8 +80,10 @@ public class Enseignant implements Serializable {
 
     @Override
     public String toString() {
-        return "participants.modeles.Enseignant[ id=" + id + " ]";
+        return "Enseignant{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", pass=" + pass + ", miage=" + miage + '}';
     }
+
+  
     
     public String getNom() {
         return nom;

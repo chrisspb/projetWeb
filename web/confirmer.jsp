@@ -37,6 +37,7 @@
                             <tr>  
                                 <td>${u.nom}</td>  
                                 <td>${u.prenom}</td>
+                                <td>${u.miage}</td>
                                 <td><input type="checkbox" id="${u.id}"/><label for="${u.id}"></label></td>
                             </tr>  
                         </c:forEach>

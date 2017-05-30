@@ -28,11 +28,11 @@ import participants.modeles.Etudiant;
  */
 @WebServlet(name = "ServletEnseignants", urlPatterns = {"/ServletEnseignants"})
 public class ServletEnseignants extends HttpServlet {
-
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
     @EJB
     private GestionnaireEnseignants gestionnaireEnseignants;
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -66,8 +66,16 @@ public class ServletEnseignants extends HttpServlet {
             request.setAttribute("message", message);
         } 
         else if (action.equals("confirmer_inscription")) {
-            Collection<Etudiant> liste = gestionnaireEtudiants.getAllEtudiant();
+            
+            Enseignant e = (Enseignant) session.getAttribute("enseignant");
+            System.out.println("enseignant : " + e);
+            Collection m = gestionnaireEnseignants.getMiageEnseignant();
+            String miage = (String) m.iterator().next();
+            System.out.println("mail : " + miage);
+            
+            Collection<Etudiant> liste = gestionnaireEtudiants.getEtudiantByMiage(miage);
             request.setAttribute("listeDesEtudiants", liste);
+            
             
             forwardTo = "confirmer-form.jsp?action=confirmer_inscription";
             message = "Enseignant créé";
