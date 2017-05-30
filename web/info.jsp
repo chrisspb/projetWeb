@@ -4,6 +4,8 @@
     Author     : perle
 --%>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -64,9 +66,11 @@
                                 <p>Transport</p>
                             </div>
                         </div>
-                        <div class="card-action">
-                            <a href="#" id="packE"><i class="material-icons">shopping_cart</i></a>
-                        </div>
+                        <c:if test = "${sessionScope['connexionEtudiant'] == true}">
+                            <div class="card-action">
+                                <a href="#" id="packE"><i class="material-icons">shopping_cart</i></a>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
                 <div class="col s12 m4">
@@ -84,9 +88,11 @@
                                 <p>Transport</p>
                             </div>
                         </div>
-                        <div class="card-action">
-                            <a href="#" id="packD"><i class="material-icons">shopping_cart</i></a>
-                        </div>
+                        <c:if test = "${sessionScope['connexionEtudiant'] == true}">
+                            <div class="card-action">
+                                <a href="#" id="packD"><i class="material-icons">shopping_cart</i></a>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
                 <div class="col s12 m4">
@@ -103,9 +109,11 @@
                                 <p>Transport</p>
                             </div>
                         </div>
-                        <div class="card-action">
-                            <a href="#" id="packDSH"><i class="material-icons">shopping_cart</i></a>
-                        </div>
+                        <c:if test = "${sessionScope['connexionEtudiant'] == true}">
+                            <div class="card-action">
+                                <a href="#" id="packDSH"><i class="material-icons">shopping_cart</i></a>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
             </div>

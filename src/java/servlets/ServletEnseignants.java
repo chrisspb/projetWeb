@@ -8,7 +8,9 @@ package servlets;
 import enseignants.gestionnaires.GestionnaireEnseignants;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import javax.ejb.EJB;
+import javax.faces.bean.SessionScoped;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +18,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import participants.gestionnaires.GestionnaireEtudiants;
 import participants.modeles.Enseignant;
+import participants.modeles.Etudiant;
 
 /**
  *
@@ -24,10 +28,12 @@ import participants.modeles.Enseignant;
  */
 @WebServlet(name = "ServletEnseignants", urlPatterns = {"/ServletEnseignants"})
 public class ServletEnseignants extends HttpServlet {
-    
+
+    @EJB
+    private GestionnaireEtudiants gestionnaireEtudiants;
     @EJB
     private GestionnaireEnseignants gestionnaireEnseignants;
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,17 +46,15 @@ public class ServletEnseignants extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-         String action = request.getParameter("action");
+
+        String action = request.getParameter("action");
         response.setContentType("text/html;charset=UTF-8");
 
         String forwardTo = "";
         String message = "";
         HttpSession session = request.getSession(false);
-        System.out.println("KKKKKKKK");
-        System.out.println("Action : " + action);
-        
-        if(action.equals("inscriptionEnseignants")){
+
+        if (action.equals("inscriptionEnseignants")) {
             String prenom = request.getParameter("prenom");
             String nom = request.getParameter("nom");
             String email = request.getParameter("email");
@@ -60,11 +64,18 @@ public class ServletEnseignants extends HttpServlet {
             forwardTo = "index-form.jsp?";
             message = "Enseignant créé";
             request.setAttribute("message", message);
+        } 
+        else if (action.equals("confirmer_inscription")) {
+            Collection<Etudiant> liste = gestionnaireEtudiants.getAllEtudiant();
+            request.setAttribute("listeDesEtudiants", liste);
             
-            RequestDispatcher dp = request.getRequestDispatcher(forwardTo);
-            dp.forward(request, response);
+            forwardTo = "confirmer-form.jsp?action=confirmer_inscription";
+            message = "Enseignant créé";
+            request.setAttribute("message", message);
         }
-        
+
+        RequestDispatcher dp = request.getRequestDispatcher(forwardTo);
+        dp.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

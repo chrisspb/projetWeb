@@ -50,7 +50,7 @@ public class ServletEtudiants extends HttpServlet {
     
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
-
+    
     // ici injection de code ! On n'initialise pas ! 
 
     private final static Logger LOGGER
@@ -117,11 +117,11 @@ public class ServletEtudiants extends HttpServlet {
 
                     saveFile(request, response);
 
-                    Etudiant e = new Etudiant(nom, prenom, email, password, naissance, miage, photo, diplome);
+                    Etudiant e = new Etudiant(nom, prenom, email, password, naissance, miage, photo, diplome, false);
                     System.out.println(e.toString());
                     //Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
 
-                    Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, miage, photo, diplome);
+                    Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, miage, photo, diplome, false);
 
                     System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + photo + diplome);
 
@@ -152,6 +152,12 @@ public class ServletEtudiants extends HttpServlet {
                 message = "Vous êtes maintenant connecté(e)";
                 request.setAttribute("message", message);
 
+            }
+            else if (action.equals("trombi_miage")) {
+                String miage = request.getParameter("choix_miage");
+                Collection<Etudiant> liste = gestionnaireEtudiants.getEtudiantByMiage(miage);
+                request.setAttribute("listeDesEtudiants", liste);
+                forwardTo = "trombinoscope-form.jsp?action=trombi_miage";
             }
             //getServletContext().getRequestDispatcher("/index-form.jsp").forward(  
             //    request, response);

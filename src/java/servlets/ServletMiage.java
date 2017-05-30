@@ -66,6 +66,14 @@ public class ServletMiage extends HttpServlet {
                 request.setAttribute("message", message);
 
             }
+            else if (action.equals("trombinoscope")) {
+                Collection<Miage> liste = gestionnaireMiage.getAllMiage();
+                request.setAttribute("listeDesMiages", liste);
+
+                forwardTo = "trombinoscope-form.jsp?action=trombinoscope";
+                message = "Liste des utilisateurs";
+                request.setAttribute("message", message);
+            }
             else {
                 forwardTo = "index.jsp?action=todo";
                 message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";

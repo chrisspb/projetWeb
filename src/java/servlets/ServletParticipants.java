@@ -26,7 +26,7 @@ import participants.gestionnaires.GestionnaireEtudiants;
  */
 @WebServlet(name = "ServletParticipants", urlPatterns = {"/ServletParticipants"})
 public class ServletParticipants extends HttpServlet {
-
+    
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
     @EJB

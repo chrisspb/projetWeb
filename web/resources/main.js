@@ -53,3 +53,7 @@ $('#vote_video').on('change', function () {
         $(this).data('value', $(this).val());
     }
 });
+
+/*$('#trombi_miage').on('click', function () {
+    document.getElementById('trombi').style.display = "table";
+});*/

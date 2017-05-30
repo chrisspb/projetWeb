@@ -24,21 +24,16 @@ public class Etudiant implements Serializable{
     private String naissance;
     private String miage;
     private String photo;
-    private boolean diplome; 
+    private boolean diplome, valide; 
     
     // attributs participant
     private String nom, prenom, mail, pass;
 
   
     public Etudiant() {  
-    }  
-       
-    public Etudiant(String mail, String pass){
-        this.mail = mail;
-        this.pass = pass;
-    } 
+    }   
     
-    public Etudiant(final String nom, final String prenom, final String mail, final String pass, final String naissance, final String miage, final String photo, final boolean diplome) {  
+    public Etudiant(final String nom, final String prenom, final String mail, final String pass, final String naissance, final String miage, final String photo, final boolean diplome, final boolean valide) {  
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
@@ -47,8 +42,16 @@ public class Etudiant implements Serializable{
         this.miage = miage;
         this.photo = photo;
         this.diplome = diplome;
-                
-    }  
+        this.valide = valide;  
+    }
+
+    public boolean isValide() {
+        return valide;
+    }
+
+    public void setValide(boolean valide) {
+        this.valide = valide;
+    }
 
     public String getMiage() {
         return miage;
