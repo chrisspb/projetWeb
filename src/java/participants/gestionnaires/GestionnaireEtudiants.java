@@ -53,8 +53,13 @@ public class GestionnaireEtudiants {
     }
     
     public Collection<Etudiant> getEtudiantByMiage(String miage) {
-        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = \"" + miage + "\"");
+        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = \"" + miage + "\" AND etu.valide = false");
         return q.getResultList();
+    }
+    
+    public void valideEtudiant(int id) {
+        Query q = em.createQuery("UPDATE Etudiant etu SET etu.valide = true WHERE etu.id = \"" + id + "\"");
+        q.executeUpdate();
     }
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

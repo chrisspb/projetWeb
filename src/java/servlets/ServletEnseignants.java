@@ -28,11 +28,11 @@ import participants.modeles.Etudiant;
  */
 @WebServlet(name = "ServletEnseignants", urlPatterns = {"/ServletEnseignants"})
 public class ServletEnseignants extends HttpServlet {
+
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
     @EJB
     private GestionnaireEnseignants gestionnaireEnseignants;
-
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,21 +64,32 @@ public class ServletEnseignants extends HttpServlet {
             forwardTo = "index-form.jsp?";
             message = "Enseignant créé";
             request.setAttribute("message", message);
-        } 
-        else if (action.equals("confirmer_inscription")) {
-            
+        } else if (action.equals("confirmer_inscription")) {
+
             Enseignant e = (Enseignant) session.getAttribute("enseignant");
             System.out.println("enseignant : " + e);
-            Collection m = gestionnaireEnseignants.getMiageEnseignant();
-            String miage = (String) m.iterator().next();
-            System.out.println("mail : " + miage);
-            
+            //Collection m = gestionnaireEnseignants.getMiageEnseignant(e.getMiage());
+            //String miage = (String) m.iterator().next();
+            String miage = e.getMiage();
+            System.out.println("miage : " + miage);
+
             Collection<Etudiant> liste = gestionnaireEtudiants.getEtudiantByMiage(miage);
             request.setAttribute("listeDesEtudiants", liste);
-            
-            
+
             forwardTo = "confirmer-form.jsp?action=confirmer_inscription";
             message = "Enseignant créé";
+            request.setAttribute("message", message);
+        } else if (action.equals("validerEtudiant")) {
+            String[] valeurs = request.getParameterValues("check");
+            
+            for (String str : valeurs) {
+                int idEtu = Integer.parseInt(str.trim());
+                System.out.println(idEtu);
+                gestionnaireEtudiants.valideEtudiant(idEtu);
+            }
+
+            forwardTo = "index-form.jsp?";
+            message = "Etudiant(s) validé(s)";
             request.setAttribute("message", message);
         }
 
