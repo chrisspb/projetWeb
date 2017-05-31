@@ -15,12 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Confirmer la participation des étudiants</title>
     </head>
-    <c:if test="${requestScope['message'] != null}">
-        <body onload="toast();"> 
-    </c:if>
-    <c:if test="${requestScope['message'] == null}">
-        <body>
-    </c:if>
+    <body> 
         <div class="marge">
             <c:choose>
                 <c:when test="${not empty requestScope['listeDesEtudiants']}">
@@ -62,10 +57,4 @@
 
         </div>
     </body>
-    <script>
-        function toast() {
-            var $toastContent = $('<span>${requestScope['message']}</span>');
-            Materialize.toast($toastContent, 5000);
-        }
-    </script>
 </html>
