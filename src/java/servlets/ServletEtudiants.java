@@ -47,12 +47,11 @@ import participants.modeles.Participants;
 @MultipartConfig(location = "/", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 //FICHIER D'UPLOAD GENERE A LA RACINE DU PROJET GLASSFISH !
 public class ServletEtudiants extends HttpServlet {
+
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
-    
-    
-    // ici injection de code ! On n'initialise pas ! 
 
+    // ici injection de code ! On n'initialise pas ! 
     private final static Logger LOGGER
             = Logger.getLogger(ServletEtudiants.class.getCanonicalName());
 
@@ -152,13 +151,7 @@ public class ServletEtudiants extends HttpServlet {
                 message = "Vous êtes maintenant connecté(e)";
                 request.setAttribute("message", message);
 
-            }
-            else if (action.equals("trombi_miage")) {
-                String miage = request.getParameter("choix_miage");
-                Collection<Etudiant> liste = gestionnaireEtudiants.getEtudiantByMiage(miage);
-                request.setAttribute("listeDesEtudiants", liste);
-                forwardTo = "trombinoscope-form.jsp?action=trombi_miage";
-            }
+            } 
             //getServletContext().getRequestDispatcher("/index-form.jsp").forward(  
             //    request, response);
         }
@@ -186,7 +179,7 @@ public class ServletEtudiants extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         processRequest(request, response);
     }
 

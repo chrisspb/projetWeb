@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import miage.gestionnaires.GestionnaireMiage;
 import miage.modeles.Miage;
+import participants.gestionnaires.GestionnaireEtudiants;
+import participants.modeles.Etudiant;
 
 /**
  *
@@ -24,7 +26,9 @@ import miage.modeles.Miage;
  */
 @WebServlet(name = "ServletMiage", urlPatterns = {"/ServletMiage"})
 public class ServletMiage extends HttpServlet {
-
+    
+    @EJB
+    private GestionnaireEtudiants gestionnaireEtudiants;
     @EJB
     private GestionnaireMiage gestionnaireMiage;
 
@@ -73,6 +77,16 @@ public class ServletMiage extends HttpServlet {
                 forwardTo = "trombinoscope-form.jsp?action=trombinoscope";
                 message = "Liste des utilisateurs";
                 request.setAttribute("message", message);
+            }
+            else if (action.equals("trombi_miage")) {
+                String miage = request.getParameter("choix_miage");
+                Collection<Etudiant> liste = gestionnaireEtudiants.getEtudiantByMiage(miage);
+                request.setAttribute("listeDesEtudiants", liste); 
+                System.out.println(liste);
+                request.setAttribute("miage_choisie", miage);
+                Collection<Miage> listeM = gestionnaireMiage.getAllMiage();
+                request.setAttribute("listeDesMiages", listeM);
+                forwardTo = "trombinoscope-form.jsp?action=trombi_miage";
             }
             else {
                 forwardTo = "index.jsp?action=todo";

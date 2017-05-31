@@ -29,11 +29,6 @@ body .marge {
     margin-top: -1.5em;
 }
 
-body div.card {
-    margin-left: 20em;
-    margin-right: 20em;
-}
-
 main {
     flex: 1 0 auto;
 }

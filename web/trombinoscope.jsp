@@ -21,13 +21,21 @@
                 <div class="card-content">
                     <span class="card-title">Choisir une Miage</span>
                     </br>
-                    <form class="col s12" action="ServletUsers" method="get">
+                    <form class="col s12" action="ServletMiage" method="post">
                         <div class="row">
-                            <div class="input-field col s8">
-                                <select id="choix_miage" name="choix_miage" onchange="rafraichir();">
+                            <div class="input-field col s7 offset-l1">
+                                <select id="choix_miage" name="choix_miage">
                                     <option value="" disabled selected>Choisissez la MIAGE :</option>
                                     <c:forEach var="m" items="${requestScope['listeDesMiages']}">
-                                        <option value="${m.miage}">${m.miage}</option>
+
+                                        <c:choose>
+                                            <c:when test="${param['choix_miage'] == m.miage}">
+                                                <option value="${m.miage}" selected>${m.miage}</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <option value="${m.miage}">${m.miage}</option>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </c:forEach>
                                 </select>
                             </div>
@@ -40,30 +48,31 @@
                 </div>
             </div>
 
-            </br>
-            <c:if test="${param['action'] == 'trombi_miage'}" > 
-                <table border="10" class="centered responsive-table" id="trombi" hidden>  
-                    <!-- La ligne de titre du tableau des comptes -->
-                    <thead>
-                        <tr>
-                            <th>Photo</th>
-                            <th>Nom</th>
-                            <th>Prenom</th>
-                        </tr>
-                    </thead>
-
-                    <!-- Ici on affiche les lignes, une par utilisateur -->  
-                    <!-- cette variable montre comment on peut utiliser JSTL et EL pour calculer -->  
-                    <tbody> 
-                        <c:forEach var="u" items="${requestScope['listeDesEtudiants']}">  
-                            <tr>  
-                                <td>${u.photo}</td>
-                                <td>${u.nom}</td>  
-                                <td>${u.prenom}</td>
-                            </tr>  
-                        </c:forEach>
-                    </tbody>
-                </table>
+            </br> 
+            <c:if test="${param['choix_miage'] !=null}">
+                <c:choose>
+                    <c:when test="${not empty requestScope['listeDesEtudiants']}">
+                        <h5 class="titre center">Trombinoscope des étudiants de la Miage de ${param['choix_miage']}</h5>
+                        <div class="row">
+                            <c:forEach var="u" items="${requestScope['listeDesEtudiants']}">
+                                <div class="col s4 m4">
+                                    <div class="card">  
+                                        <div class="card-image">
+                                            <img src="resources/user.png">
+                                        </div>
+                                            <!--<span class="card-title">${u.nom}</span>-->
+                                        <div class="card-content">
+                                            <p class="center">${u.prenom} ${u.nom}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <span class="red-text center-align"><b>Aucun étudiant n'a été trouvé pour la Miage de ${param['choix_miage']}</b></span>
+                    </c:otherwise>
+                </c:choose>
             </c:if>
         </div>
     </body>
