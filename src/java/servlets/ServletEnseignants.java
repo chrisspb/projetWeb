@@ -9,6 +9,7 @@ import enseignants.gestionnaires.GestionnaireEnseignants;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
+import java.util.Iterator;
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
 import javax.servlet.RequestDispatcher;
@@ -73,7 +74,7 @@ public class ServletEnseignants extends HttpServlet {
             String miage = e.getMiage();
             System.out.println("miage : " + miage);
 
-            Collection<Etudiant> liste = gestionnaireEtudiants.getEtudiantByMiage(miage);
+            Collection<Etudiant> liste = gestionnaireEtudiants.getEtudiantNotChecked(miage);
             request.setAttribute("listeDesEtudiants", liste);
 
             forwardTo = "confirmer-form.jsp?action=confirmer_inscription";

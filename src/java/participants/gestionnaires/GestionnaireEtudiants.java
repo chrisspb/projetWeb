@@ -52,8 +52,13 @@ public class GestionnaireEtudiants {
         return q.getResultList();
     }
     
-    public Collection<Etudiant> getEtudiantByMiage(String miage) {
+    public Collection<Etudiant> getEtudiantNotChecked(String miage) {
         Query q = em.createQuery("select etu from Etudiant etu where etu.miage = \"" + miage + "\" AND etu.valide = false");
+        return q.getResultList();
+    }
+    
+    public Collection<Etudiant> getEtudiantByMiage(String miage) {
+        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = \"" + miage + "\"");
         return q.getResultList();
     }
     
