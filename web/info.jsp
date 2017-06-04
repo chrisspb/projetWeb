@@ -169,7 +169,7 @@
                                     <input type="hidden" name="cmd" value="_xclick">
 
                                     <!-- Specify details about the item that buyers will purchase. -->
-                                    <input type="hidden" name="item_name" value="JNM 2018 - Pack étudiant">
+                                    <input type="hidden" name="item_name" value="JNM 2018 - Pack etudiant">
                                     <input type="hidden" name="amount" value="110">
                                     <input type="hidden" name="currency_code" value="EUR">
 
@@ -217,7 +217,7 @@
                                     <input type="hidden" name="cmd" value="_xclick">
 
                                     <!-- Specify details about the item that buyers will purchase. -->
-                                    <input type="hidden" name="item_name" value="JNM 2018 - Pack diplômé">
+                                    <input type="hidden" name="item_name" value="JNM 2018 - Pack diplome">
                                     <input type="hidden" name="amount" value="160">
                                     <input type="hidden" name="currency_code" value="EUR">
 
@@ -265,7 +265,7 @@
                                     <input type="hidden" name="cmd" value="_xclick">
 
                                     <!-- Specify details about the item that buyers will purchase. -->
-                                    <input type="hidden" name="item_name" value="JNM 2018 - Pack diplômé sans hébergement">
+                                    <input type="hidden" name="item_name" value="JNM 2018 - Pack diplome sans hebergement">
                                     <input type="hidden" name="amount" value="100">
                                     <input type="hidden" name="currency_code" value="EUR">
 
