@@ -39,10 +39,9 @@ import javax.ws.rs.core.MediaType;
 import participants.modeles.Entreprise;
 import participants.modeles.Participants;
 
-/**
- *
- * @author michel
- */
+// chemin christian : C:\\Users\\Christian\\Desktop\\Bureau\\projetWeb\\web\\resources
+// chemin perle : 
+
 @WebServlet(name = "ServletUsers", urlPatterns = {"/ServletUsers"})
 @MultipartConfig(location = "/", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 //FICHIER D'UPLOAD GENERE A LA RACINE DU PROJET GLASSFISH !
