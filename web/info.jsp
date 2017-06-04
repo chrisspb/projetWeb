@@ -144,34 +144,44 @@
                         </div>
                         <!--Body-->
                         <div class="modal-body">
-                            <form action="ServletUsers" method="post">
-                                <table class="table table-hover centered">
-                                    <thead>
-                                        <tr>
-                                            <th>Pack</th>
-                                            <th>Prix</th>
-                                            <th>Annuler</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>ETUDIANT</td>
-                                            <td>110&euro;</td>
-                                            <td><a><i class="material-icons">delete</i></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="modal-footer">
-                                    <a href="#!" class="btn modal-action modal-close waves-effect waves-light grey">Fermer</a>
-                                    <input type="hidden" name="action" value="acheterE"/>  
+                            <table class="table table-hover centered">
+                                <thead>
+                                    <tr>
+                                        <th>Pack</th>
+                                        <th>Prix</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ETUDIANT</td>
+                                        <td>110&euro;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="modal-footer">
+                                <a href="#!" class="btn modal-action modal-close waves-effect waves-light grey">Fermer</a>
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+                                    <!-- Identify your business so that you can collect the payments. -->
+                                    <input type="hidden" name="business" value="adresse@miage.fr">
+
+                                    <!-- Specify a Buy Now button. -->
+                                    <input type="hidden" name="cmd" value="_xclick">
+
+                                    <!-- Specify details about the item that buyers will purchase. -->
+                                    <input type="hidden" name="item_name" value="JNM 2018 - Pack étudiant">
+                                    <input type="hidden" name="amount" value="110">
+                                    <input type="hidden" name="currency_code" value="EUR">
+
+                                    <!-- Display the payment button. -->
                                     <input class="btn waves-effect waves-light light-blue accent-3 left" type="submit" value="Acheter" name="submit"/>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="modal fade" id="achatD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <!--Content-->
@@ -182,34 +192,44 @@
                         </div>
                         <!--Body-->
                         <div class="modal-body">
-                            <form action="ServletUsers" method="post">
-                                <table class="table table-hover centered">
-                                    <thead>
-                                        <tr>
-                                            <th>Pack</th>
-                                            <th>Prix</th>
-                                            <th>Annuler</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>DIPLÔMÉ</td>
-                                            <td>160&euro;</td>
-                                            <td><a><i class="material-icons">delete</i></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="modal-footer">
-                                    <a href="#!" class="btn modal-action modal-close waves-effect waves-light grey">Fermer</a>
-                                    <input type="hidden" name="action" value="acheterD"/>  
+                            <table class="table table-hover centered">
+                                <thead>
+                                    <tr>
+                                        <th>Pack</th>
+                                        <th>Prix</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>DIPLÔMÉ</td>
+                                        <td>160&euro;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="modal-footer">
+                                <a href="#!" class="btn modal-action modal-close waves-effect waves-light grey">Fermer</a>
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+                                    <!-- Identify your business so that you can collect the payments. -->
+                                    <input type="hidden" name="business" value="adresse@miage.fr">
+
+                                    <!-- Specify a Buy Now button. -->
+                                    <input type="hidden" name="cmd" value="_xclick">
+
+                                    <!-- Specify details about the item that buyers will purchase. -->
+                                    <input type="hidden" name="item_name" value="JNM 2018 - Pack diplômé">
+                                    <input type="hidden" name="amount" value="160">
+                                    <input type="hidden" name="currency_code" value="EUR">
+
+                                    <!-- Display the payment button. -->
                                     <input class="btn waves-effect waves-light light-blue accent-3 left" type="submit" value="Acheter" name="submit"/>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="modal fade" id="achatDSH" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <!--Content-->
@@ -220,29 +240,39 @@
                         </div>
                         <!--Body-->
                         <div class="modal-body">
-                            <form action="ServletUsers" method="post">
-                                <table class="table table-hover centered">
-                                    <thead>
-                                        <tr>
-                                            <th>Pack</th>
-                                            <th>Prix</th>
-                                            <th>Annuler</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>DIPLÔMÉ SANS HÉBERGEMENT</td>
-                                            <td>100&euro;</td>
-                                            <td><a><i class="material-icons">delete</i></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="modal-footer">
-                                    <a href="#!" class="btn modal-action modal-close waves-effect waves-light grey">Fermer</a>
-                                    <input type="hidden" name="action" value="acheterDSH"/>  
+                            <table class="table table-hover centered">
+                                <thead>
+                                    <tr>
+                                        <th>Pack</th>
+                                        <th>Prix</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>DIPLÔMÉ SANS HÉBERGEMENT</td>
+                                        <td>100&euro;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="modal-footer">
+                                <a href="#!" class="btn modal-action modal-close waves-effect waves-light grey">Fermer</a>
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+                                    <!-- Identify your business so that you can collect the payments. -->
+                                    <input type="hidden" name="business" value="adresse@miage.fr">
+
+                                    <!-- Specify a Buy Now button. -->
+                                    <input type="hidden" name="cmd" value="_xclick">
+
+                                    <!-- Specify details about the item that buyers will purchase. -->
+                                    <input type="hidden" name="item_name" value="JNM 2018 - Pack diplômé sans hébergement">
+                                    <input type="hidden" name="amount" value="100">
+                                    <input type="hidden" name="currency_code" value="EUR">
+
+                                    <!-- Display the payment button. -->
                                     <input class="btn waves-effect waves-light light-blue accent-3 left" type="submit" value="Acheter" name="submit"/>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
