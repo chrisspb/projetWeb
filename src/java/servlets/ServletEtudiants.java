@@ -121,7 +121,6 @@ public class ServletEtudiants extends HttpServlet {
                     //Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
 
                     Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, miage, photo, diplome, false);
-
                     System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + photo + diplome);
 
                     session.setAttribute("connexionEtudiant", true);
@@ -196,7 +195,30 @@ public class ServletEtudiants extends HttpServlet {
                 System.out.println("Fichier trouvé");
 
                 printPart(part, out);
-                part.write(request.getParameter("fichier"));
+                
+                String str = "D:\\glassfish-4.1\\glassfish\\domains\\domain1\\generated\\jsp\\Projet_web\\Photo_\\" + request.getParameter("nom");
+                File dir = new File(str);
+                if(!dir.exists()){
+                    System.out.println("creating directory: " + dir.getName());
+                    boolean result = false;
+
+                    try{
+                        dir.mkdir();
+                        result = true;
+                    } 
+                    catch(SecurityException se){
+                        //handle it
+                        System.out.println("Aborting..." + se);
+                        this.doPost(request, response);
+                    }        
+                    if(result) {    
+                        System.out.println("DIR created");  
+                        System.out.println("Chemin : " + dir.getAbsolutePath());
+                    }
+                } else {
+                    System.out.println("le file " + dir + " existe déjà");
+                }
+                part.write(request.getParameter("nom"));
             }
         }
 
