@@ -19,7 +19,7 @@
         <div class="marge">
             <c:choose>
                 <c:when test="${not empty requestScope['listeDesEtudiants']}">
-                    <h5 class="center titre">Confirmer la participation des étudiants</h5> 
+                    <h5 class="center titre">Confirmer la participation des étudiants pour la Miage de ${requestScope['miage']}</h5> 
                     </br></br>
                     <form class="col s12" action="ServletEnseignants" method="post">
                         <table border="10" class="centered responsive-table">  
@@ -39,7 +39,6 @@
                                     <tr>  
                                         <td>${u.nom}</td>  
                                         <td>${u.prenom}</td>
-                                        <td>${u.miage}</td>
                                         <td><input type="checkbox" name="check" id="${u.id}" value="${u.id}"/><label for="${u.id}"></label></td>
                                     </tr>  
                                 </c:forEach>
@@ -51,7 +50,7 @@
                     </form>
                 </c:when>
                 <c:otherwise>
-                    <h5 class="center titre red-text">Aucun étudiant à confirmer pour l'instant</h5> 
+                    <h5 class="center red-text">Aucun étudiant à confirmer pour l'instant pour la Miage de ${requestScope['miage']}</h5> 
                 </c:otherwise>
             </c:choose>
 

@@ -79,7 +79,7 @@ public class ServletMiage extends HttpServlet {
                 Collection<Miage> listeM = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", listeM);
                 int page = 1;
-                int nbEtuParPage = 11;
+                int nbEtuParPage = 12;
                 if (request.getParameter("page") != null) {
                     page = Integer.parseInt(request.getParameter("page"));
                 }

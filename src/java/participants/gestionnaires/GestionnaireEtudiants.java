@@ -74,7 +74,13 @@ public class GestionnaireEtudiants {
         return liste.size();
     }
     
-    public Collection<Etudiant> get10Etudiant(int start) {
+    public int getNumberEtudiant() {
+        Query q = em.createQuery("select etu from Etudiant etu where etu.valide = false");
+        List<Etudiant> liste = q.getResultList();
+        return liste.size();
+    }
+    
+    public List<Etudiant> get10Etudiant(int start) {
         Query q = em.createQuery("select etu from Etudiant etu");
         q.setFirstResult(start);
         q.setMaxResults(10);
@@ -84,7 +90,7 @@ public class GestionnaireEtudiants {
     public List<Etudiant> getEtudiantByMiage(String miage, int start) {
         Query q = em.createQuery("select etu from Etudiant etu where etu.miage = \"" + miage + "\"");
         q.setFirstResult(start);
-        q.setMaxResults(11);
+        q.setMaxResults(12);
         return q.getResultList();
     }
     // Add business logic below. (Right-click in editor and choose

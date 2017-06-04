@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
 import javax.servlet.RequestDispatcher;
@@ -69,10 +70,8 @@ public class ServletEnseignants extends HttpServlet {
 
             Enseignant e = (Enseignant) session.getAttribute("enseignant");
             System.out.println("enseignant : " + e);
-            //Collection m = gestionnaireEnseignants.getMiageEnseignant(e.getMiage());
-            //String miage = (String) m.iterator().next();
             String miage = e.getMiage();
-            System.out.println("miage : " + miage);
+            request.setAttribute("miage", miage);
 
             Collection<Etudiant> liste = gestionnaireEtudiants.getEtudiantNotChecked(miage);
             request.setAttribute("listeDesEtudiants", liste);
@@ -82,7 +81,7 @@ public class ServletEnseignants extends HttpServlet {
             request.setAttribute("message", message);
         } else if (action.equals("validerEtudiant")) {
             String[] valeurs = request.getParameterValues("check");
-            
+
             for (String str : valeurs) {
                 int idEtu = Integer.parseInt(str.trim());
                 System.out.println(idEtu);
