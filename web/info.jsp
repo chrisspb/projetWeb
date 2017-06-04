@@ -54,7 +54,7 @@
                 <div class="col s12 m4">
                     <div class="card pack">
                         <div class="card-content light-green lighten-1">
-                            <h5 class="center prix"><b>110&euro;</b></h5>
+                            <h5 class="center"><b>110&euro;</b></h5>
                         </div>
                         <div class="card-content">
                             <span class="card-title center">PACK ETUDIANT</span>
@@ -68,7 +68,7 @@
                         </div>
                         <c:if test = "${sessionScope['connexionEtudiant'] == true}">
                             <div class="card-action">
-                                <a href="#" id="packE"><i class="material-icons">shopping_cart</i></a>
+                                <a href="#achatE" id="packE"><i class="material-icons">shopping_cart</i></a>
                             </div>
                         </c:if>
                     </div>
@@ -76,7 +76,7 @@
                 <div class="col s12 m4">
                     <div class="card pack">
                         <div class="card-content amber lighten-3">
-                            <h5 class="center prix"><b>160&euro;</b></h5>
+                            <h5 class="center"><b>160&euro;</b></h5>
                         </div>
                         <div class="card-content">
                             <span class="card-title center">PACK DIPLÔMÉ</span>
@@ -90,7 +90,7 @@
                         </div>
                         <c:if test = "${sessionScope['connexionEtudiant'] == true}">
                             <div class="card-action">
-                                <a href="#" id="packD"><i class="material-icons">shopping_cart</i></a>
+                                <a href="#achatD" id="packD"><i class="material-icons">shopping_cart</i></a>
                             </div>
                         </c:if>
                     </div>
@@ -98,7 +98,7 @@
                 <div class="col s12 m4">
                     <div class="card pack">
                         <div class="card-content amber lighten-3">
-                            <h5 class="center prix"><b>100&euro;</b></h5>
+                            <h5 class="center"><b>100&euro;</b></h5>
                         </div>
                         <div class="card-content">
                             <span class="card-title center">PACK DIPLÔMÉ SANS HEBERGEMENT</span>
@@ -111,7 +111,7 @@
                         </div>
                         <c:if test = "${sessionScope['connexionEtudiant'] == true}">
                             <div class="card-action">
-                                <a href="#" id="packDSH"><i class="material-icons">shopping_cart</i></a>
+                                <a href="#achatDSH" id="packDSH"><i class="material-icons">shopping_cart</i></a>
                             </div>
                         </c:if>
                     </div>
@@ -134,8 +134,119 @@
                 </div>
             </div>
 
-
-
+            <div class="modal fade" id="achatE" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="titre">Votre panier</h4>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body">
+                            <form action="ServletUsers" method="post">
+                                <table class="table table-hover centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Pack</th>
+                                            <th>Prix</th>
+                                            <th>Annuler</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>ETUDIANT</td>
+                                            <td>110&euro;</td>
+                                            <td><a><i class="material-icons">delete</i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="modal-footer">
+                                    <a href="#!" class="btn modal-action modal-close waves-effect waves-light grey">Fermer</a>
+                                    <input type="hidden" name="action" value="acheterE"/>  
+                                    <input class="btn waves-effect waves-light light-blue accent-3 left" type="submit" value="Acheter" name="submit"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal fade" id="achatD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="titre">Votre panier</h4>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body">
+                            <form action="ServletUsers" method="post">
+                                <table class="table table-hover centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Pack</th>
+                                            <th>Prix</th>
+                                            <th>Annuler</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>DIPLÔMÉ</td>
+                                            <td>160&euro;</td>
+                                            <td><a><i class="material-icons">delete</i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="modal-footer">
+                                    <a href="#!" class="btn modal-action modal-close waves-effect waves-light grey">Fermer</a>
+                                    <input type="hidden" name="action" value="acheterD"/>  
+                                    <input class="btn waves-effect waves-light light-blue accent-3 left" type="submit" value="Acheter" name="submit"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal fade" id="achatDSH" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="titre">Votre panier</h4>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body">
+                            <form action="ServletUsers" method="post">
+                                <table class="table table-hover centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Pack</th>
+                                            <th>Prix</th>
+                                            <th>Annuler</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>DIPLÔMÉ SANS HÉBERGEMENT</td>
+                                            <td>100&euro;</td>
+                                            <td><a><i class="material-icons">delete</i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="modal-footer">
+                                    <a href="#!" class="btn modal-action modal-close waves-effect waves-light grey">Fermer</a>
+                                    <input type="hidden" name="action" value="acheterDSH"/>  
+                                    <input class="btn waves-effect waves-light light-blue accent-3 left" type="submit" value="Acheter" name="submit"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

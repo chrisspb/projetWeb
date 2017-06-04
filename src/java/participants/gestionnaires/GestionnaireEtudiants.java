@@ -6,6 +6,7 @@
 package participants.gestionnaires;
 
 import java.util.Collection;  
+import java.util.List;
 import javax.ejb.Stateless;  
 import javax.persistence.EntityManager;  
 import javax.persistence.PersistenceContext;  
@@ -65,6 +66,26 @@ public class GestionnaireEtudiants {
     public void valideEtudiant(int id) {
         Query q = em.createQuery("UPDATE Etudiant etu SET etu.valide = true WHERE etu.id = \"" + id + "\"");
         q.executeUpdate();
+    }
+    
+    public int getNumberEtudiant(String miage) {
+        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = \"" + miage + "\"");
+        List<Etudiant> liste = q.getResultList();
+        return liste.size();
+    }
+    
+    public Collection<Etudiant> get10Etudiant(int start) {
+        Query q = em.createQuery("select etu from Etudiant etu");
+        q.setFirstResult(start);
+        q.setMaxResults(10);
+        return q.getResultList();
+    }
+    
+    public List<Etudiant> getEtudiantByMiage(String miage, int start) {
+        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = \"" + miage + "\"");
+        q.setFirstResult(start);
+        q.setMaxResults(11);
+        return q.getResultList();
     }
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

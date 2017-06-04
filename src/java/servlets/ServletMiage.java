@@ -8,6 +8,7 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +27,7 @@ import participants.modeles.Etudiant;
  */
 @WebServlet(name = "ServletMiage", urlPatterns = {"/ServletMiage"})
 public class ServletMiage extends HttpServlet {
-    
+
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
     @EJB
@@ -60,8 +61,7 @@ public class ServletMiage extends HttpServlet {
                 message = "Liste des utilisateurs";
                 request.setAttribute("message", message);
 
-            }
-            else if (action.equals("lien_admin")) {
+            } else if (action.equals("lien_admin")) {
                 Collection<Miage> liste = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", liste);
 
@@ -69,26 +69,29 @@ public class ServletMiage extends HttpServlet {
                 message = "Liste des utilisateurs";
                 request.setAttribute("message", message);
 
-            }
-            else if (action.equals("trombinoscope")) {
+            } else if (action.equals("trombinoscope")) {
                 Collection<Miage> liste = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", liste);
-
                 forwardTo = "trombinoscope-form.jsp?action=trombinoscope";
                 message = "Liste des utilisateurs";
                 request.setAttribute("message", message);
-            }
-            else if (action.equals("trombi_miage")) {
-                String miage = request.getParameter("choix_miage");
-                Collection<Etudiant> liste = gestionnaireEtudiants.getEtudiantByMiage(miage);
-                request.setAttribute("listeDesEtudiants", liste); 
-                System.out.println(liste);
-                request.setAttribute("miage_choisie", miage);
+            } else if (action.equals("trombi_miage")) {
                 Collection<Miage> listeM = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", listeM);
+                int page = 1;
+                int nbEtuParPage = 11;
+                if (request.getParameter("page") != null) {
+                    page = Integer.parseInt(request.getParameter("page"));
+                }
+                String miage = request.getParameter("choix_miage");
+                List<Etudiant> liste = gestionnaireEtudiants.getEtudiantByMiage(miage, (page - 1) * nbEtuParPage);
+                int nbEtu = gestionnaireEtudiants.getNumberEtudiant(miage);
+                int nbPage = (int) Math.ceil(nbEtu * 1.0 / nbEtuParPage);
+                request.setAttribute("listeDesEtudiants", liste);
+                request.setAttribute("nbPage", nbPage);
+                request.setAttribute("page", page);
                 forwardTo = "trombinoscope-form.jsp?action=trombi_miage";
-            }
-            else {
+            } else {
                 forwardTo = "index.jsp?action=todo";
                 message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";
             }
