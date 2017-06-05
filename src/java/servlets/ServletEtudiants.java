@@ -126,6 +126,7 @@ public class ServletEtudiants extends HttpServlet {
                     System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + nomPhoto + diplome);
 
                     session.setAttribute("connexionEtudiant", true);
+                    session.setAttribute("objEtudiant", e1.getId());
                     session.setAttribute("user", true);
 
                 } else if (etat.equals("entreprise")) {
@@ -168,7 +169,7 @@ public class ServletEtudiants extends HttpServlet {
                 String[] votesShirt = request.getParameterValues("votes_shirt");
                 int idEtudiant = (int) session.getAttribute("objEtudiant");
                 System.out.println("idEtudiant : " + idEtudiant);
-                
+                System.out.println("votes : " + votesShirt);
                 for (int i=0; i<votesShirt.length;i++) {
                     int idMiage = Integer.parseInt(votesShirt[i]);
                     System.out.println("votesShirt : " + idMiage);
