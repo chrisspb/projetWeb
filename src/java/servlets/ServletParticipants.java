@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import participants.gestionnaires.GestionnaireEtudiants;
 import participants.modeles.Enseignant;
+import participants.modeles.Etudiant;
 
 /**
  *
@@ -95,9 +96,11 @@ public class ServletParticipants extends HttpServlet {
             System.out.println("taille collection etudiant : " + etu.size());
             if (etu.size() != 0) {
                 System.out.println("Connexion OK");
+                Etudiant e = (Etudiant) etu.iterator().next();
                 session = request.getSession(true);
                 //Administrateurs a = (Administrateurs) adm.iterator().next();
                 session.setAttribute("connexionEtudiant", true);
+                session.setAttribute("objEtudiant", e.getId());
                 session.setAttribute("user", true);
                 System.out.println("kk - " + session.getAttribute("user"));
                 forwardTo = "index-form.jsp?";

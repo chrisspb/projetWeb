@@ -122,13 +122,14 @@ public class ServletEtudiants extends HttpServlet {
                         diplome = true;
                     }
 
-                    saveFile(request, response);
+                    
                     //Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
                     boolean b = gestionnaireEtudiants.checkMail(email);
                     System.out.println("Servlet boolean : " + b);
                     if (b == true) {
                         Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, miage, nomPhoto, diplome, false);
                         System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + nomPhoto + diplome);
+                        saveFile(request, response);
                         session.setAttribute("badLog", false);
                         session.setAttribute("connexionEtudiant", true);
                         session.setAttribute("objEtudiant", e1.getId());
