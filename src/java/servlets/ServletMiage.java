@@ -27,11 +27,11 @@ import participants.modeles.Etudiant;
  */
 @WebServlet(name = "ServletMiage", urlPatterns = {"/ServletMiage"})
 public class ServletMiage extends HttpServlet {
-
-    @EJB
-    private GestionnaireEtudiants gestionnaireEtudiants;
+    
     @EJB
     private GestionnaireMiage gestionnaireMiage;
+    @EJB
+    private GestionnaireEtudiants gestionnaireEtudiants;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -69,6 +69,14 @@ public class ServletMiage extends HttpServlet {
                 message = "Liste des utilisateurs";
                 request.setAttribute("message", message);
 
+            } else if (action.equals("lien_vote")) {
+                Collection<Miage> liste = gestionnaireMiage.getAllMiage();
+                request.setAttribute("listeDesMiages", liste);
+                System.out.println(liste);
+
+                forwardTo = "vote-form.jsp?action=lien_vote";
+                message = "Liste des utilisateurs";
+                request.setAttribute("message", message);
             } else if (action.equals("trombinoscope")) {
                 Collection<Miage> liste = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", liste);

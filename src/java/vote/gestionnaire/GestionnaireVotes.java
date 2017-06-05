@@ -28,8 +28,9 @@ public class GestionnaireVotes {
      * @param etu
      * @param miages
      */
-    public Vote ajouterVotes(int idEtu, int idMiage){
-        Vote v = new Vote(idEtu, idMiage);
+    public Vote ajouterVotes(int idEtu, int idMiage, boolean cat){
+        Vote v = new Vote(idEtu, idMiage, cat);
+        em.persist(v);
         return v;
     }
     

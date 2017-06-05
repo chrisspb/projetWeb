@@ -36,6 +36,8 @@ import javax.servlet.http.Part;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import miage.gestionnaires.GestionnaireMiage;
+import miage.modeles.Miage;
 import participants.modeles.Entreprise;
 import participants.modeles.Participants;
 import vote.gestionnaire.GestionnaireVotes;
@@ -48,7 +50,8 @@ import vote.modele.Vote;
 @MultipartConfig(location = "C:\\Users\\Christian\\Desktop\\projet_web_final\\projetWeb\\web\\resources", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 //FICHIER D'UPLOAD GENERE A LA RACINE DU PROJET GLASSFISH !
 public class ServletEtudiants extends HttpServlet {
-
+    @EJB
+    private GestionnaireMiage gestionnaireMiage;
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
     @EJB
@@ -176,22 +179,34 @@ public class ServletEtudiants extends HttpServlet {
                 message = "Etudiant(s) validé(s)";
                 request.setAttribute("message", message);
             }else if(action.equals("valider_vote_shirt")){
-                String[] votesShirt = request.getParameterValues("votes_shirt");
+                Collection<Miage> liste = gestionnaireMiage.getAllMiage();
+                request.setAttribute("listeDesMiages", liste);
+                String miage = request.getParameter("vote_shirt");
+                String[] votesShirt = request.getParameterValues("vote_shirt");
                 int idEtudiant = (int) session.getAttribute("objEtudiant");
                 System.out.println("idEtudiant : " + idEtudiant);
                 System.out.println("votes : " + votesShirt);
-                for (int i=0; i<votesShirt.length;i++) {
-                    int idMiage = Integer.parseInt(votesShirt[i]);
-                    System.out.println("votesShirt : " + idMiage);
-                    gestionnaireVotes.ajouterVotes(idEtudiant, idMiage);
+                for (String str : votesShirt) {
+                    int idMiage = Integer.parseInt(str.trim());
+                    gestionnaireVotes.ajouterVotes(idEtudiant, idMiage, false);
                 }
                 
-//                while(votesShirt.hasMoreElements()){
-//                    System.out.println("votesShirt : " + votesShirt.nextElement());
-//                    System.out.println("Ajout du vote : " + Integer.parseInt(votesShirt.nextElement()) + " à l'étudiant " + idEtudiant);
-//                    v = gestionnaireVotes.ajouterVotes(idEtudiant, Integer.parseInt(votesShirt.nextElement()));
-//                }
-                forwardTo = "index-form.jsp?";
+                forwardTo = "vote-form.jsp?action=valider_vote_shirt";
+                request.setAttribute("Vos votes ont été enregistrés", message);
+            }  else if(action.equals("valider_vote_video")) {
+                Collection<Miage> liste = gestionnaireMiage.getAllMiage();
+                request.setAttribute("listeDesMiages", liste);
+                String miage = request.getParameter("vote_video");
+                String[] votesVideo = request.getParameterValues("vote_video");
+                int idEtudiant = (int) session.getAttribute("objEtudiant");
+                System.out.println("idEtudiant : " + idEtudiant);
+                System.out.println("votes : " + votesVideo);
+                for (String str : votesVideo) {
+                    int idMiage = Integer.parseInt(str.trim());
+                    gestionnaireVotes.ajouterVotes(idEtudiant, idMiage, true);
+                }
+                
+                forwardTo = "vote-form.jsp?action=valider_vote_video";
                 request.setAttribute("Vos votes ont été enregistrés", message);
             }
             //getServletContext().getRequestDispatcher("/index-form.jsp").forward(  

@@ -32,14 +32,24 @@ public class Vote implements Serializable {
     private int id;
     private int etudiant;
     private int miage;
+    private boolean cat;
     
     public Vote(){
          
     }
     
-    public Vote(int idEtu, int idMiage){
+    public Vote(final int idEtu, final int idMiage, final boolean cat){
         this.etudiant = idEtu;
         this.miage = idMiage;
+        this.cat = cat;
+    }
+
+    public boolean isCat() {
+        return cat;
+    }
+
+    public void setCat(boolean cat) {
+        this.cat = cat;
     }
 
     @Override
