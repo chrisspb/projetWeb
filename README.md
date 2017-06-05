@@ -28,5 +28,6 @@
 5. S'il s'agit d'une entreprise partenaire que est connectée, elle n'a accès qu'au trombinoscope.
 6. L'administrateur par défaut, contenu dans le fichier InsertRecords, permet de se connecter et d'inscrire un enseignant à l'évènement.
 7. Une fois l'enseignant inscrit par l'administrateur, il peut se connecter et confirmer la participation des étudiants inscrits dans sa miage. 
-8. Tous les étudiants validés ont alors accès à l'onglet de vote pour le concours de tee shirt et de vidéo de même qu'à l'achat d'un pack. 
-9. Tous les participants à l'évènement ont accès au trombinoscope.
+8. Tous les étudiants validés ont alors accès à l'onglet de vote pour le concours de tee shirt et de vidéo. Ils peuvent voter pour trois miages maximum pour chaque concours. Une fois que le vote est pris en compte, il est automatiquement grisé afin qu'il ne puisse plus voter. 
+9. Ils peuvent également acheter un pack, avec une simulation de paiement avec PayPal. 
+10. Tous les participants à l'évènement ont accès au trombinoscope.
