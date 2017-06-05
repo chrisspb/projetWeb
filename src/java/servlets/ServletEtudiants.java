@@ -184,7 +184,6 @@ public class ServletEtudiants extends HttpServlet {
             } else if (action.equals("valider_vote_shirt")) {
                 Collection<Miage> liste = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", liste);
-                String miage = request.getParameter("vote_shirt");
                 String[] votesShirt = request.getParameterValues("vote_shirt");
                 int idEtudiant = (int) session.getAttribute("objEtudiant");
                 System.out.println("idEtudiant : " + idEtudiant);
@@ -193,13 +192,12 @@ public class ServletEtudiants extends HttpServlet {
                     int idMiage = Integer.parseInt(str.trim());
                     gestionnaireVotes.ajouterVotes(idEtudiant, idMiage, false);
                 }
-
+                session.setAttribute("grisé", true);
                 forwardTo = "vote-form.jsp?action=valider_vote_shirt";
                 request.setAttribute("Vos votes ont été enregistrés", message);
             } else if (action.equals("valider_vote_video")) {
                 Collection<Miage> liste = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", liste);
-                String miage = request.getParameter("vote_video");
                 String[] votesVideo = request.getParameterValues("vote_video");
                 int idEtudiant = (int) session.getAttribute("objEtudiant");
                 System.out.println("idEtudiant : " + idEtudiant);
@@ -208,7 +206,7 @@ public class ServletEtudiants extends HttpServlet {
                     int idMiage = Integer.parseInt(str.trim());
                     gestionnaireVotes.ajouterVotes(idEtudiant, idMiage, true);
                 }
-
+                session.setAttribute("grisé", true);
                 forwardTo = "vote-form.jsp?action=valider_vote_video";
                 request.setAttribute("Vos votes ont été enregistrés", message);
             }
