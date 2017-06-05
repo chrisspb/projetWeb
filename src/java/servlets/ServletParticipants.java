@@ -97,7 +97,13 @@ public class ServletParticipants extends HttpServlet {
             if (etu.size() != 0) {
                 System.out.println("Connexion OK");
                 Etudiant e = (Etudiant) etu.iterator().next();
-                session = request.getSession(true);
+                boolean b = gestionnaireEtudiants.verifCompteValide(e.getId());
+                if(b){
+                    session.setAttribute("etuValide", true);
+                    System.out.println("Compte etudiant valide");
+                } else {
+                    System.out.println("compte etudiant non valide");
+                }
                 //Administrateurs a = (Administrateurs) adm.iterator().next();
                 session.setAttribute("connexionEtudiant", true);
                 session.setAttribute("objEtudiant", e.getId());

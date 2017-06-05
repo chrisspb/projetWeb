@@ -107,6 +107,16 @@ public class GestionnaireEtudiants {
         return b;
     }
     
+    public boolean verifCompteValide(int id){
+        Query q = em.createQuery("select etu from Etudiant etu where etu.id = \"" + id + "\"");
+        System.out.println("debug 1");
+        List r = q.getResultList();
+        System.out.println("debug 2");
+        Etudiant e = (Etudiant) r.iterator().next();
+        System.out.println("verif : " + e);
+        return e.isValide();
+    }
+    
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }

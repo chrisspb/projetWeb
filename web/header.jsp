@@ -38,7 +38,7 @@
             </c:if>    
             <li><a href="info-form.jsp">Infos pratiques</a></li>
             <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown1">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
-            <c:if test = "${sessionScope['connexionEtudiant'] == true}">
+            <c:if test = "${sessionScope['connexionEtudiant'] == true && sessionScope['etuValide'] == true}">
                 <li><a href="ServletMiage?action=lien_vote">Voter</a></li>
             </c:if>
             <c:if test = "${sessionScope['user'] == true}">
