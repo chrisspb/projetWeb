@@ -66,7 +66,7 @@
                                 <p>Transport</p>
                             </div>
                         </div>
-                        <c:if test = "${sessionScope['connexionEtudiant'] == true}">
+                        <c:if test = "${sessionScope['connexionEtudiant'] == true && sessionScope['etuValide'] == true}">
                             <div class="card-action">
                                 <a href="#achatE" id="packE"><i class="material-icons">shopping_cart</i></a>
                             </div>
@@ -88,7 +88,7 @@
                                 <p>Transport</p>
                             </div>
                         </div>
-                        <c:if test = "${sessionScope['connexionEtudiant'] == true}">
+                        <c:if test = "${sessionScope['connexionEtudiant'] == true && sessionScope['etuValide'] == true}">
                             <div class="card-action">
                                 <a href="#achatD" id="packD"><i class="material-icons">shopping_cart</i></a>
                             </div>
@@ -109,7 +109,7 @@
                                 <p>Transport</p>
                             </div>
                         </div>
-                        <c:if test = "${sessionScope['connexionEtudiant'] == true}">
+                        <c:if test = "${sessionScope['connexionEtudiant'] == true && sessionScope['etuValide'] == true}">
                             <div class="card-action">
                                 <a href="#achatDSH" id="packDSH"><i class="material-icons">shopping_cart</i></a>
                             </div>

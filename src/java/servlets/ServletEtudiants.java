@@ -193,7 +193,7 @@ public class ServletEtudiants extends HttpServlet {
                     int idMiage = Integer.parseInt(str.trim());
                     gestionnaireVotes.ajouterVotes(idEtudiant, idMiage, false);
                 }
-                session.setAttribute("grisé", true);
+                session.setAttribute("grise_shirt", true);
                 forwardTo = "vote-form.jsp?action=valider_vote_shirt";
                 request.setAttribute("Vos votes ont été enregistrés", message);
             } else if (action.equals("valider_vote_video")) {
@@ -207,7 +207,7 @@ public class ServletEtudiants extends HttpServlet {
                     int idMiage = Integer.parseInt(str.trim());
                     gestionnaireVotes.ajouterVotes(idEtudiant, idMiage, true);
                 }
-                session.setAttribute("grisé", true);
+                session.setAttribute("grise_video", true);
                 forwardTo = "vote-form.jsp?action=valider_vote_video";
                 request.setAttribute("Vos votes ont été enregistrés", message);
             }

@@ -27,7 +27,7 @@
                                 <option value="" disabled selected>Choisir 3 Miage maximum</option>
                                 <c:forEach var="m" items="${requestScope['listeDesMiages']}">
                                     <c:choose>
-                                        <c:when test="${sessionScope['grisé'] == true}">
+                                        <c:when test="${sessionScope['grise_shirt'] == true}">
                                             <option value="${m.id}" disabled selected>${m.miage}</option>
                                         </c:when>
                                         <c:otherwise>
@@ -56,7 +56,7 @@
                                 <option value="" disabled selected>Choisir 3 Miage maximum</option>
                                 <c:forEach var="m" items="${requestScope['listeDesMiages']}">
                                     <c:choose>
-                                        <c:when test="${sessionScope['grisé'] == true}">
+                                        <c:when test="${sessionScope['grise_video'] == true}">
                                             <option value="${m.id}" disabled selected>${m.miage}</option>
                                         </c:when>
                                         <c:otherwise>
