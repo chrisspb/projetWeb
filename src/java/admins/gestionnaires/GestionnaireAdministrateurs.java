@@ -36,16 +36,18 @@ public class GestionnaireAdministrateurs {
     }
     
     public Collection<Administrateurs> getOneAdm(String email, String pass) {
-        Query q = em.createQuery("select a from Administrateurs a where a.mail = \"" + email + "\" AND a.pass = \"" + pass + "\"");
+        Query q = em.createQuery("select a from Administrateurs a where a.mail = :email AND a.pass = :pass");
+        q.setParameter("email", email);
+        q.setParameter("pass", pass);
         return q.getResultList();
     }
     
     public boolean connexionAdm(String email, String pass){
-        Query q = em.createQuery("select a from Administrateurs a where a.mail = \"" + email + "\" AND a.pass = \"" + pass + "\"");
-        System.out.println("la requete est passee");
+        Query q = em.createQuery("select a from Administrateurs a where a.mail = :email AND a.pass = :pass");
+        q.setParameter("email", email);
+        q.setParameter("pass", pass);
         List verif = q.getResultList();
         if(verif.size() != 0){
-            System.out.println("Connexion OK"); 
             return true;
         } else {
             return false;

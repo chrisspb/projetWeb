@@ -44,7 +44,9 @@ public class GestionnaireEtudiants {
     }
     
     public Collection<Etudiant> getOneEtudiant(String email, String pass) {
-        Query q = em.createQuery("select etu from Etudiant etu where etu.mail = \"" + email + "\" AND etu.pass = \"" + pass + "\"");
+        Query q = em.createQuery("select etu from Etudiant etu where etu.mail = :email AND etu.pass = :pass");
+        q.setParameter("email", email);
+        q.setParameter("pass", pass);
         return q.getResultList();
     }
     
@@ -54,22 +56,26 @@ public class GestionnaireEtudiants {
     }
     
     public Collection<Etudiant> getEtudiantNotChecked(String miage) {
-        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = \"" + miage + "\" AND etu.valide = false");
+        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = :miage AND etu.valide = false");
+        q.setParameter("miage", miage);
         return q.getResultList();
     }
     
     public Collection<Etudiant> getEtudiantByMiage(String miage) {
-        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = \"" + miage + "\"");
+        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = :miage");
+        q.setParameter("miage", miage);
         return q.getResultList();
     }
     
     public void valideEtudiant(int id) {
-        Query q = em.createQuery("UPDATE Etudiant etu SET etu.valide = true WHERE etu.id = \"" + id + "\"");
+        Query q = em.createQuery("UPDATE Etudiant etu SET etu.valide = true WHERE etu.id = :id");
+        q.setParameter("id", id);
         q.executeUpdate();
     }
     
     public int getNumberEtudiant(String miage) {
-        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = \"" + miage + "\"");
+        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = :miage");
+        q.setParameter("miage", miage);
         List<Etudiant> liste = q.getResultList();
         return liste.size();
     }
@@ -88,32 +94,31 @@ public class GestionnaireEtudiants {
     }
     
     public List<Etudiant> getEtudiantByMiage(String miage, int start) {
-        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = \"" + miage + "\"");
+        Query q = em.createQuery("select etu from Etudiant etu where etu.miage = :miage");
+        q.setParameter("miage", miage);
         q.setFirstResult(start);
         q.setMaxResults(12);
         return q.getResultList();
     }
     
     public boolean checkMail(String mail){
-        Query q = em.createQuery("select etu from Etudiant etu where etu.mail = \"" + mail + "\"");
+        Query q = em.createQuery("select etu from Etudiant etu where etu.mail = :mail");
+        q.setParameter("mail", mail);
         List r = q.getResultList();
         boolean b = false;
-        System.out.println("Taille r : " + r.size());
+        //System.out.println("Taille r : " + r.size());
         if(r.size() == 0){
-            
             b = true;
         } 
-        System.out.println("boolean : " + b);
+        //System.out.println("boolean : " + b);
         return b;
     }
     
     public boolean verifCompteValide(int id){
-        Query q = em.createQuery("select etu from Etudiant etu where etu.id = \"" + id + "\"");
-        System.out.println("debug 1");
+        Query q = em.createQuery("select etu from Etudiant etu where etu.id = :id");
+        q.setParameter("id", id);
         List r = q.getResultList();
-        System.out.println("debug 2");
         Etudiant e = (Etudiant) r.iterator().next();
-        System.out.println("verif : " + e);
         return e.isValide();
     }
     

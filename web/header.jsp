@@ -41,7 +41,7 @@
                 <c:if test = "${sessionScope['connexionEtudiant'] == true && sessionScope['etuValide'] == true}">
                 <li><a href="ServletMiage?action=lien_vote">Voter</a></li>
                 </c:if>
-                <c:if test = "${sessionScope['user'] == true}">
+                <c:if test = "${sessionScope['user'] == true && sessionScope['etuValide'] == true}">
                 <li><a href="ServletMiage?action=trombinoscope">Trombinoscope</a></li>
                 </c:if>
             <li>|</li>

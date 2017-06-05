@@ -69,7 +69,7 @@ public class ServletEnseignants extends HttpServlet {
         } else if (action.equals("confirmer_inscription")) {
 
             Enseignant e = (Enseignant) session.getAttribute("enseignant");
-            System.out.println("enseignant : " + e);
+            //System.out.println("enseignant : " + e);
             String miage = e.getMiage();
             request.setAttribute("miage", miage);
 
@@ -84,7 +84,7 @@ public class ServletEnseignants extends HttpServlet {
 
             for (String str : valeurs) {
                 int idEtu = Integer.parseInt(str.trim());
-                System.out.println(idEtu);
+                //System.out.println(idEtu);
                 gestionnaireEtudiants.valideEtudiant(idEtu);
             }
 

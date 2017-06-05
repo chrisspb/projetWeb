@@ -48,16 +48,15 @@ public class ServletAdmin extends HttpServlet {
         String forwardTo = "";
         String message = "";
         HttpSession session = request.getSession(false);
-        System.out.println("KKKKKKKK");
-        System.out.println("Action : " + action);
+        //System.out.println("Action : " + action);
         
         if(action.equals("connexion")){
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
-                System.out.println("kk - " + email + password);
+                //System.out.println(email + password);
                 Collection adm = gestionnaireAdministrateurs.getOneAdm(email, password);
                 if(adm.size() == 0){
-                    System.out.println("Login - password incorrect"); 
+                    //System.out.println("Login - password incorrect"); 
                     session = request.getSession(false);
                     session.setAttribute("user", false);
                     forwardTo = "index-form.jsp?";  
@@ -65,17 +64,17 @@ public class ServletAdmin extends HttpServlet {
                     request.setAttribute("message", message);
                     
                 } else {
-                    System.out.println("Connexion OK");  
+                    //System.out.println("Connexion OK");  
                     session = request.getSession(true);
                     //Administrateurs a = (Administrateurs) adm.iterator().next();
                     session.setAttribute("connexionAdm", true);
-                    System.out.println("kk - " + session.getAttribute("user"));
+                    //System.out.println(session.getAttribute("user"));
                     forwardTo = "index-form.jsp?";   
                     message = "Vous êtes maintenant connecté(e)";
                     request.setAttribute("message", message);
                 }
         }
-        System.out.println("forward : " + forwardTo);
+        //System.out.println("forward : " + forwardTo);
         RequestDispatcher dp = request.getRequestDispatcher(forwardTo);
         dp.forward(request, response);
         

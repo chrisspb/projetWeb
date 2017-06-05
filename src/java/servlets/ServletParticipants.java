@@ -7,6 +7,7 @@ package servlets;
 
 import admins.gestionnaires.GestionnaireAdministrateurs;
 import enseignants.gestionnaires.GestionnaireEnseignants;
+import entreprise.gestionnaire.GestionnaireEntreprise;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
@@ -34,6 +35,8 @@ public class ServletParticipants extends HttpServlet {
     private GestionnaireEnseignants gestionnaireEnseignants;
     @EJB
     private GestionnaireAdministrateurs gestionnaireAdministrateurs;
+    @EJB
+    private GestionnaireEntreprise gestionnaireEntreprise;
     
 
 
@@ -55,22 +58,21 @@ public class ServletParticipants extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        System.out.println("KKKKKKKK");
-        System.out.println("Action : " + action);
+        //System.out.println("Action : " + action);
 
         if (action.equals("connexion")) {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            System.out.println("kk - " + email + password);
+            //System.out.println(email + password);
             Collection enseignant = gestionnaireEnseignants.getOneEnseignant(email, password);
             
-            System.out.println("taille collection enseignant : " + enseignant.size());
+            //System.out.println("taille collection enseignant : " + enseignant.size());
             if (enseignant.size() != 0) {
-                System.out.println("Connexion de l'enseignant OK !");
+                //System.out.println("Connexion de l'enseignant OK !");
                 Enseignant ens = (Enseignant) enseignant.iterator().next();
                 session.setAttribute("connexionEnseignant", true);
                 session.setAttribute("user", true);
-                System.out.println("Enseignant placé en attribut de session : " + ens);
+                //System.out.println("Enseignant placé en attribut de session : " + ens);
                 session.setAttribute("enseignant", ens);
                 forwardTo = "index-form.jsp?";
                 message = "Vous êtes maintenant connecté(e)";
@@ -80,12 +82,21 @@ public class ServletParticipants extends HttpServlet {
 
             Collection adm = gestionnaireAdministrateurs.getOneAdm(email, password);
             if (adm.size() != 0) {
-                System.out.println("Connexion OK");
-                session = request.getSession(true);
+                //System.out.println("Connexion OK");
                 //Administrateurs a = (Administrateurs) adm.iterator().next();
                 session.setAttribute("connexionAdm", true);
                 session.setAttribute("user", true);
-                System.out.println("kk - " + session.getAttribute("user"));
+                //System.out.println(session.getAttribute("user"));
+                forwardTo = "index-form.jsp?";
+                message = "Vous êtes maintenant connecté(e)";
+                request.setAttribute("message", message);
+                connexion = true;
+            }
+            
+            Collection ent = gestionnaireEntreprise.getOneEntreprise(email, password);
+            if(ent.size() != 0){
+                //System.out.println("Connexion OK");
+                session.setAttribute("user", true);
                 forwardTo = "index-form.jsp?";
                 message = "Vous êtes maintenant connecté(e)";
                 request.setAttribute("message", message);
@@ -93,22 +104,23 @@ public class ServletParticipants extends HttpServlet {
             }
 
             Collection etu = gestionnaireEtudiants.getOneEtudiant(email, password);
-            System.out.println("taille collection etudiant : " + etu.size());
+            //System.out.println("taille collection etudiant : " + etu.size());
             if (etu.size() != 0) {
-                System.out.println("Connexion OK");
+                //System.out.println("Connexion OK");
                 Etudiant e = (Etudiant) etu.iterator().next();
                 boolean b = gestionnaireEtudiants.verifCompteValide(e.getId());
                 if(b){
                     session.setAttribute("etuValide", true);
-                    System.out.println("Compte etudiant valide");
-                } else {
-                    System.out.println("compte etudiant non valide");
                 }
+                    //System.out.println("Compte etudiant valide");
+//                } else {
+//                    System.out.println("compte etudiant non valide");
+//                }
                 //Administrateurs a = (Administrateurs) adm.iterator().next();
                 session.setAttribute("connexionEtudiant", true);
                 session.setAttribute("objEtudiant", e.getId());
                 session.setAttribute("user", true);
-                System.out.println("kk - " + session.getAttribute("user"));
+                //System.out.println(session.getAttribute("user"));
                 forwardTo = "index-form.jsp?";
                 message = "Vous êtes maintenant connecté(e)";
                 request.setAttribute("message", message);
@@ -125,7 +137,7 @@ public class ServletParticipants extends HttpServlet {
         }
 
         if (action.equals("deconnexion")) {
-            System.out.println("Déconnexion absolue");
+            //System.out.println("Déconnexion");
             session.setAttribute("connexionEnseignant", false);
             session.setAttribute("connexionAdm", false);
             session.setAttribute("connexionEtudiant", false);
@@ -135,7 +147,7 @@ public class ServletParticipants extends HttpServlet {
             message = "Vous venez de vous déconnecter";
             request.setAttribute("message", message);
         }
-        System.out.println("forward : " + forwardTo);
+        ///System.out.println("forward : " + forwardTo);
         RequestDispatcher dp = request.getRequestDispatcher(forwardTo);
         dp.forward(request, response);
 

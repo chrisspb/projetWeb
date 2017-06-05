@@ -26,9 +26,11 @@ public class GestionnaireEnseignants {
     // "Insert Code > Add Business Method")
     @PersistenceContext
     private EntityManager em;
-    
+
     public Collection<Enseignant> getOneEnseignant(String email, String pass) {
-        Query q = em.createQuery("select e from Enseignant e where e.mail = \"" + email + "\" AND e.pass = \"" + pass + "\"");
+        Query q = em.createQuery("select e from Enseignant e where e.mail = :email AND e.pass = :pass");
+        q.setParameter("email", email);
+        q.setParameter("pass", pass);
         return q.getResultList();
     }
 
@@ -38,9 +40,10 @@ public class GestionnaireEnseignants {
         return e;
     }
 
-    public Collection<Enseignant> getMiageEnseignant(String miage){
-        Query q = em.createQuery("select e.miage from Enseignant e where e.miage = \"" + miage + "\"");
+    public Collection<Enseignant> getMiageEnseignant(String miage) {
+        Query q = em.createQuery("select e.miage from Enseignant e where e.miage = :miage");
+        q.setParameter("miage", miage);
         return q.getResultList();
     }
-    
+
 }

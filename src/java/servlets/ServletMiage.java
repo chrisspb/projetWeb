@@ -56,13 +56,10 @@ public class ServletMiage extends HttpServlet {
             if (action.equals("lien_participer")) {
                 Collection<Miage> liste = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", liste);
-
                 forwardTo = "participer-form.jsp?action=lien_participer";
-
             } else if (action.equals("lien_admin")) {
                 Collection<Miage> liste = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", liste);
-
                 forwardTo = "admin-form.jsp?action=lien_admin";
                 message = "Liste des utilisateurs";
                 request.setAttribute("message", message);
@@ -70,8 +67,7 @@ public class ServletMiage extends HttpServlet {
             } else if (action.equals("lien_vote")) {
                 Collection<Miage> liste = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", liste);
-                System.out.println(liste);
-
+                //System.out.println(liste);
                 forwardTo = "vote-form.jsp?action=lien_vote";
                 message = "Liste des utilisateurs";
                 request.setAttribute("message", message);
@@ -103,7 +99,7 @@ public class ServletMiage extends HttpServlet {
             }
         }
 
-        System.out.println("forward : " + forwardTo);
+        //System.out.println("forward : " + forwardTo);
         RequestDispatcher dp = request.getRequestDispatcher(forwardTo);
         dp.forward(request, response);
         // Après un forward, plus rien ne peut être exécuté après !  

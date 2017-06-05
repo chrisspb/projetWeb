@@ -43,10 +43,10 @@ import participants.modeles.Participants;
 import vote.gestionnaire.GestionnaireVotes;
 import vote.modele.Vote;
 
-// chemin christian : C:\Users\Christian\Desktop\projet_web_final\projetWeb\web\resources
+// chemin christian : C:\Users\Christian\Desktop\projet_web_pres\projetWeb\web\resources
 // chemin perle : C:\Users\perle\Desktop\M1 MIAGE\S2\Web\Projet_Web\web\resources
 @WebServlet(name = "ServletUsers", urlPatterns = {"/ServletUsers"})
-@MultipartConfig(location = "C:\\Users\\perle\\Desktop\\M1 MIAGE\\S2\\Web\\Projet_Web\\web\\resources", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
+@MultipartConfig(location = "C:\\Users\\Christian\\Desktop\\projet_web_pres\\projetWeb\\web\\resources", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 //FICHIER D'UPLOAD GENERE A LA RACINE DU PROJET GLASSFISH !
 public class ServletEtudiants extends HttpServlet {
 
@@ -89,13 +89,11 @@ public class ServletEtudiants extends HttpServlet {
         String forwardTo = "";
         String message = "";
         HttpSession session = request.getSession(false);
-        System.out.println("KKKKKKKK");
-        System.out.println("Action : " + action);
+        //System.out.println("Action : " + action);
 
         if (action != null) {
 
             if (action.equals("participer")) {
-                System.out.println("action : participer");
                 // verification des parametres places dans la requete
                 boolean diplome = false;
                 // questions générales
@@ -103,12 +101,11 @@ public class ServletEtudiants extends HttpServlet {
                 String nom = request.getParameter("nom");
                 String email = request.getParameter("email");
                 String etat = request.getParameter("group1");
-                System.out.println("Etat : " + etat);
+                //System.out.println("Etat : " + etat);
                 String password = request.getParameter("password");
 
                 //étudiant
                 if (etat.equals("miagiste")) {
-                    System.out.println("miage");
                     String naissance = request.getParameter("date_naiss");
                     String miage = request.getParameter("choix_miage");
 //                    String photo = request.getParameter("fichier");
@@ -116,7 +113,7 @@ public class ServletEtudiants extends HttpServlet {
                     Part photo = request.getPart("fichier");
                     String nomPhoto = photo.getSubmittedFileName();
                     String dip = request.getParameter("group2");
-                    System.out.println("dip : " + dip);
+                    //System.out.println("dip : " + dip);
 
                     if (dip.equals("Ydiplome")) {
                         diplome = true;
@@ -125,10 +122,10 @@ public class ServletEtudiants extends HttpServlet {
                     
                     //Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
                     boolean b = gestionnaireEtudiants.checkMail(email);
-                    System.out.println("Servlet boolean : " + b);
+                    //System.out.println("Servlet boolean : " + b);
                     if (b == true) {
                         Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, miage, nomPhoto, diplome, false);
-                        System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + nomPhoto + diplome);
+                        //System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + nomPhoto + diplome);
                         saveFile(request, response);
                         session.setAttribute("badLog", false);
                         session.setAttribute("connexionEtudiant", true);
@@ -148,20 +145,16 @@ public class ServletEtudiants extends HttpServlet {
                     }
 
                 } else if (etat.equals("entreprise")) {
-                    System.out.println("Entreprise");
                     String fonction = request.getParameter("fonction");
                     String tel = request.getParameter("tel");
                     String nomE = request.getParameter("nomE");
                     String rueE = request.getParameter("rueE");
                     String cp = request.getParameter("cpE");
-                    System.out.println("Code postal : " + cp);
+                    //System.out.println("Code postal : " + cp);
                     //int codePostal = Integer.parseInt(cp);
                     String ville = request.getParameter("villeE");
                     String secteur = request.getParameter("sectE");
-
-                    Entreprise ent = new Entreprise(nom, prenom, email, password,
-                            fonction, tel, nomE, rueE, cp, ville, secteur);
-                    System.out.println(ent.toString());
+                    //System.out.println(ent.toString());
 
                     Entreprise ent1 = gestionnaireEtudiants.creeEntreprise(nom, prenom, email, password, fonction, tel, nomE, rueE, cp, ville, secteur);
 
@@ -175,7 +168,7 @@ public class ServletEtudiants extends HttpServlet {
 
                 for (String str : valeurs) {
                     int idEtu = Integer.parseInt(str.trim());
-                    System.out.println(idEtu);
+                    //System.out.println(idEtu);
                     gestionnaireEtudiants.valideEtudiant(idEtu);
                 }
 
@@ -187,8 +180,8 @@ public class ServletEtudiants extends HttpServlet {
                 request.setAttribute("listeDesMiages", liste);
                 String[] votesShirt = request.getParameterValues("vote_shirt");
                 int idEtudiant = (int) session.getAttribute("objEtudiant");
-                System.out.println("idEtudiant : " + idEtudiant);
-                System.out.println("votes : " + votesShirt);
+                //System.out.println("idEtudiant : " + idEtudiant);
+                //System.out.println("votes : " + votesShirt);
                 for (String str : votesShirt) {
                     int idMiage = Integer.parseInt(str.trim());
                     gestionnaireVotes.ajouterVotes(idEtudiant, idMiage, false);
@@ -201,8 +194,8 @@ public class ServletEtudiants extends HttpServlet {
                 request.setAttribute("listeDesMiages", liste);
                 String[] votesVideo = request.getParameterValues("vote_video");
                 int idEtudiant = (int) session.getAttribute("objEtudiant");
-                System.out.println("idEtudiant : " + idEtudiant);
-                System.out.println("votes : " + votesVideo);
+                //System.out.println("idEtudiant : " + idEtudiant);
+                //System.out.println("votes : " + votesVideo);
                 for (String str : votesVideo) {
                     int idMiage = Integer.parseInt(str.trim());
                     gestionnaireVotes.ajouterVotes(idEtudiant, idMiage, true);
@@ -215,7 +208,7 @@ public class ServletEtudiants extends HttpServlet {
             //    request, response);
         }
 
-        System.out.println("forward : " + forwardTo);
+        //System.out.println("forward : " + forwardTo);
         RequestDispatcher dp = request.getRequestDispatcher(forwardTo);
         dp.forward(request, response);
         // Après un forward, plus rien ne peut être exécuté après !  
@@ -250,15 +243,15 @@ public class ServletEtudiants extends HttpServlet {
         out.write("<h2> Total parts : " + parts.size() + "</h2>");
 
         for (Part part : parts) {
-            System.out.println("Name de part : " + part.getName());
+            //System.out.println("Name de part : " + part.getName());
             if (part.getName().equals("fichier")) {
-                System.out.println("Fichier trouvé");
+                //System.out.println("Fichier trouvé");
 
                 //printPart(part, out);
                 String str = "D:\\glassfish-4.1\\glassfish\\domains\\domain1\\generated\\jsp\\Projet_web\\Photo_\\" + request.getParameter("nom");
                 File dir = new File(str);
                 if (!dir.exists()) {
-                    System.out.println("creating directory: " + dir.getName());
+                    //System.out.println("creating directory: " + dir.getName());
                     boolean result = false;
 
                     try {
@@ -266,36 +259,36 @@ public class ServletEtudiants extends HttpServlet {
                         result = true;
                     } catch (SecurityException se) {
                         //handle it
-                        System.out.println("Aborting..." + se);
+                        //System.out.println("Aborting..." + se);
                         this.doPost(request, response);
                     }
                     if (result) {
-                        System.out.println("DIR created");
-                        System.out.println("Chemin : " + dir.getAbsolutePath());
+                        //System.out.println("DIR created");
+                        //System.out.println("Chemin : " + dir.getAbsolutePath());
                     }
                 } else {
-                    System.out.println("le file " + dir + " existe déjà");
+                    //System.out.println("le file " + dir + " existe déjà");
                 }
                 part.write(request.getParameter("nomFichier"));
             }
         }
 
     }
-
-    private void printPart(Part part, PrintWriter pw) {
-        StringBuffer sb = new StringBuffer();
-        sb.append("<p>");
-        sb.append("Name : " + part.getName());
-        sb.append("<br>");
-        sb.append("Content Type : " + part.getContentType());
-        sb.append("<br>");
-        sb.append("Size : " + part.getSize());
-        sb.append("<br>");
-        for (String header : part.getHeaderNames()) {
-            sb.append(header + " : " + part.getHeader(header));
-            sb.append("<br>");
-        }
-        sb.append("</p>");
-        pw.write(sb.toString());
-    }
+//
+//    private void printPart(Part part, PrintWriter pw) {
+//        StringBuffer sb = new StringBuffer();
+//        sb.append("<p>");
+//        sb.append("Name : " + part.getName());
+//        sb.append("<br>");
+//        sb.append("Content Type : " + part.getContentType());
+//        sb.append("<br>");
+//        sb.append("Size : " + part.getSize());
+//        sb.append("<br>");
+//        for (String header : part.getHeaderNames()) {
+//            sb.append(header + " : " + part.getHeader(header));
+//            sb.append("<br>");
+//        }
+//        sb.append("</p>");
+//        pw.write(sb.toString());
+//    }
 }
