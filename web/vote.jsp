@@ -19,8 +19,8 @@
                     <span class="card-title">Vote pour le meilleur t-shirt</span>
                     </br>
                     <div class="row">
-                        <form action="ServletUsers" method="post">
-                            <select multiple id="vote_shirt" data-limit="3">
+                        <form action="ServletUsers" method="post" enctype="multipart/form-data">
+                            <select multiple id="vote_shirt" data-limit="3" name = "votes_shirt">
                                 <option value="" disabled selected>Choisir 3 Miage maximum</option>
                                 <option value="aix">Aix-Marseille</option>
                                 <option value="amiens">Amiens</option>

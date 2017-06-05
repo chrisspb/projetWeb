@@ -149,7 +149,19 @@ public class ServletEtudiants extends HttpServlet {
                 message = "Vous êtes maintenant connecté(e)";
                 request.setAttribute("message", message);
 
-            } 
+            } else if (action.equals("validerEtudiant")) {
+            String[] valeurs = request.getParameterValues("check");
+
+            for (String str : valeurs) {
+                int idEtu = Integer.parseInt(str.trim());
+                System.out.println(idEtu);
+                gestionnaireEtudiants.valideEtudiant(idEtu);
+            }
+
+            forwardTo = "index-form.jsp?";
+            message = "Etudiant(s) validé(s)";
+            request.setAttribute("message", message);
+        }
             //getServletContext().getRequestDispatcher("/index-form.jsp").forward(  
             //    request, response);
         }
