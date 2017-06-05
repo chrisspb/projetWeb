@@ -15,11 +15,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Participer</title>
     </head>
+    <c:if test="${sessionScope['badLog'] == true}">
+    <body onload="toast();"> 
+</c:if>
     <body>
         <div class="marge">
             <div class="card center-align">
                 <div class="card-content">
-                    <span class="card-title">Participer</span>
+                    <span class="card-title">Participer - ${sessionScope['badLog']}</span>
                     </br>
                     <p>Merci de remplir la procédure d'inscription ci-contre afin de participer aux JNM 2018.</p>
                     </br>
@@ -141,4 +144,11 @@
             </div>
         </div>
     </body>
+    <script>
+        function toast() {
+            var $toastContent = $('<span>${requestScope['message']}</span>');
+            Materialize.toast($toastContent, 5000);
+        }
+    </script>
+    
 </html>

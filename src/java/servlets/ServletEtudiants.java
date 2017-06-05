@@ -121,14 +121,24 @@ public class ServletEtudiants extends HttpServlet {
 
                     saveFile(request, response);
                     //Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
-
-                    Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, miage, nomPhoto, diplome, false);
-                    System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + nomPhoto + diplome);
-
-                    session.setAttribute("connexionEtudiant", true);
-                    session.setAttribute("objEtudiant", e1.getId());
-                    session.setAttribute("user", true);
-
+                    boolean b = gestionnaireEtudiants.checkMail(email);
+                    System.out.println("Servlet boolean : " + b);
+                    if(b){
+                        Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, miage, nomPhoto, diplome, false);
+                        System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + nomPhoto + diplome);
+                        session.setAttribute("badLog", false);
+                        session.setAttribute("connexionEtudiant", true);
+                        session.setAttribute("objEtudiant", e1.getId());
+                        session.setAttribute("user", true);
+                    } else {
+                        forwardTo = "participer-form.jsp?";
+                        message = "L'adresse mail est déjà utilisée";
+                        session.setAttribute("badLog", true);
+                        request.setAttribute("message", message);
+                        RequestDispatcher dp = request.getRequestDispatcher(forwardTo);
+                        dp.forward(request, response);
+                    }
+                    
                 } else if (etat.equals("entreprise")) {
                     System.out.println("Entreprise");
                     String fonction = request.getParameter("fonction");
@@ -227,7 +237,7 @@ public class ServletEtudiants extends HttpServlet {
             if (part.getName().equals("fichier")) {
                 System.out.println("Fichier trouvé");
 
-                printPart(part, out);
+                //printPart(part, out);
                 
                 String str = "D:\\glassfish-4.1\\glassfish\\domains\\domain1\\generated\\jsp\\Projet_web\\Photo_\\" + request.getParameter("nom");
                 File dir = new File(str);

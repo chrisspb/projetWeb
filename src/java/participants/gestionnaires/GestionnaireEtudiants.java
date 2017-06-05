@@ -93,6 +93,20 @@ public class GestionnaireEtudiants {
         q.setMaxResults(12);
         return q.getResultList();
     }
+    
+    public boolean checkMail(String mail){
+        Query q = em.createQuery("select etu from Etudiant etu where etu.mail = \"" + mail + "\"");
+        List r = q.getResultList();
+        boolean b = false;
+        System.out.println("Taille r : " + r.size());
+        if(r.size() == 0){
+            
+            b = true;
+        } 
+        System.out.println("boolean : " + b);
+        return b;
+    }
+    
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }
