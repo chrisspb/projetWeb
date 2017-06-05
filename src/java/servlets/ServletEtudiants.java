@@ -157,6 +157,8 @@ public class ServletEtudiants extends HttpServlet {
                     //System.out.println(ent.toString());
 
                     Entreprise ent1 = gestionnaireEtudiants.creeEntreprise(nom, prenom, email, password, fonction, tel, nomE, rueE, cp, ville, secteur);
+                    session.setAttribute("user", true);
+                    session.setAttribute("etuValide", true);
 
                     forwardTo = "index-form.jsp?";
                     message = "Vous êtes maintenant connecté(e)";

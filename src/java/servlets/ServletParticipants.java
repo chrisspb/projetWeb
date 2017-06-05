@@ -97,6 +97,7 @@ public class ServletParticipants extends HttpServlet {
             if(ent.size() != 0){
                 //System.out.println("Connexion OK");
                 session.setAttribute("user", true);
+                session.setAttribute("etuValide", true);
                 forwardTo = "index-form.jsp?";
                 message = "Vous êtes maintenant connecté(e)";
                 request.setAttribute("message", message);

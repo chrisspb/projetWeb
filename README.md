@@ -25,7 +25,7 @@
 2. Si on clique sur l'onglet "participer" on est redirigé vers une page avec un formulaire à remplir. Seul un étudiant ou une entreprise doit remplir ce formulaire.
 3. On vérifie que l'adresse mail ne soit pas déjà utilisée avant de valider la participation et de le connecter automatiquement.
 4. Une fois que l'on est connecté (en tant qu'étudiant) on n'a pas encore accès aux votes ou au trombinoscope tant que l'enseignant ne l'a pas validé.
-5. S'il s'agit d'une entreprise partenaire que est connectée, elle n'a accès qu'au trombinoscope.
+5. S'il s'agit d'une entreprise partenaire qui est connectée, elle n'a accès qu'au trombinoscope.
 6. L'administrateur par défaut, contenu dans le fichier InsertRecords, permet de se connecter et d'inscrire un enseignant à l'évènement.
 7. Une fois l'enseignant inscrit par l'administrateur, il peut se connecter et confirmer la participation des étudiants inscrits dans sa miage. 
 8. Tous les étudiants validés ont alors accès à l'onglet de vote pour le concours de tee shirt et de vidéo. Ils peuvent voter pour trois miages maximum pour chaque concours. Une fois que le vote est pris en compte, il est automatiquement grisé afin qu'il ne puisse plus voter. 
