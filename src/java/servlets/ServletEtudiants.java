@@ -38,6 +38,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import participants.modeles.Entreprise;
 import participants.modeles.Participants;
+import vote.gestionnaire.GestionnaireVotes;
+import vote.modele.Vote;
 
 // chemin christian : C:\\Users\\Christian\\Desktop\\Bureau\\projetWeb\\web\\resources
 // chemin perle : 
@@ -49,7 +51,8 @@ public class ServletEtudiants extends HttpServlet {
 
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
-
+    @EJB
+    private GestionnaireVotes gestionnaireVotes;
     // ici injection de code ! On n'initialise pas ! 
     private final static Logger LOGGER
             = Logger.getLogger(ServletEtudiants.class.getCanonicalName());
@@ -150,18 +153,36 @@ public class ServletEtudiants extends HttpServlet {
                 request.setAttribute("message", message);
 
             } else if (action.equals("validerEtudiant")) {
-            String[] valeurs = request.getParameterValues("check");
+                String[] valeurs = request.getParameterValues("check");
 
-            for (String str : valeurs) {
-                int idEtu = Integer.parseInt(str.trim());
-                System.out.println(idEtu);
-                gestionnaireEtudiants.valideEtudiant(idEtu);
+                for (String str : valeurs) {
+                    int idEtu = Integer.parseInt(str.trim());
+                    System.out.println(idEtu);
+                    gestionnaireEtudiants.valideEtudiant(idEtu);
+                }
+
+                forwardTo = "index-form.jsp?";
+                message = "Etudiant(s) validé(s)";
+                request.setAttribute("message", message);
+            }else if(action.equals("valider_vote_shirt")){
+                String[] votesShirt = request.getParameterValues("votes_shirt");
+                int idEtudiant = (int) session.getAttribute("objEtudiant");
+                System.out.println("idEtudiant : " + idEtudiant);
+                
+                for (int i=0; i<votesShirt.length;i++) {
+                    int idMiage = Integer.parseInt(votesShirt[i]);
+                    System.out.println("votesShirt : " + idMiage);
+                    Vote v = gestionnaireVotes.ajouterVotes(idEtudiant, idMiage);
+                }
+                
+//                while(votesShirt.hasMoreElements()){
+//                    System.out.println("votesShirt : " + votesShirt.nextElement());
+//                    System.out.println("Ajout du vote : " + Integer.parseInt(votesShirt.nextElement()) + " à l'étudiant " + idEtudiant);
+//                    v = gestionnaireVotes.ajouterVotes(idEtudiant, Integer.parseInt(votesShirt.nextElement()));
+//                }
+                forwardTo = "index-form.jsp?";
+                request.setAttribute("Vos votes ont été enregistrés", message);
             }
-
-            forwardTo = "index-form.jsp?";
-            message = "Etudiant(s) validé(s)";
-            request.setAttribute("message", message);
-        }
             //getServletContext().getRequestDispatcher("/index-form.jsp").forward(  
             //    request, response);
         }
