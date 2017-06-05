@@ -58,8 +58,6 @@ public class ServletMiage extends HttpServlet {
                 request.setAttribute("listeDesMiages", liste);
 
                 forwardTo = "participer-form.jsp?action=lien_participer";
-                message = "Liste des utilisateurs";
-                request.setAttribute("message", message);
 
             } else if (action.equals("lien_admin")) {
                 Collection<Miage> liste = gestionnaireMiage.getAllMiage();

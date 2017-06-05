@@ -15,10 +15,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Participer</title>
     </head>
-    <c:if test="${sessionScope['badLog'] == true}">
-    <body onload="toast();"> 
-</c:if>
-    <body>
+    <c:if test="${requestScope['message'] != null}">
+        <body onload="toast();"> 
+        </c:if>
+        <c:if test="${requestScope['message'] == null}">
+        <body>
+        </c:if>
         <div class="marge">
             <div class="card center-align">
                 <div class="card-content">
@@ -146,9 +148,9 @@
     </body>
     <script>
         function toast() {
-            var $toastContent = $('<span>${requestScope['message']}</span>');
+            var $toastContent = "L'adresse mail est déjà utilisée";
             Materialize.toast($toastContent, 5000);
         }
     </script>
-    
+
 </html>

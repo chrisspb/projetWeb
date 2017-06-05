@@ -44,12 +44,12 @@ import vote.gestionnaire.GestionnaireVotes;
 import vote.modele.Vote;
 
 // chemin christian : C:\Users\Christian\Desktop\projet_web_final\projetWeb\web\resources
-// chemin perle : 
-
+// chemin perle : C:\Users\perle\Desktop\M1 MIAGE\S2\Web\Projet_Web\web\resources
 @WebServlet(name = "ServletUsers", urlPatterns = {"/ServletUsers"})
-@MultipartConfig(location = "C:\\Users\\Christian\\Desktop\\projet_web_final\\projetWeb\\web\\resources", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
+@MultipartConfig(location = "C:\\Users\\perle\\Desktop\\M1 MIAGE\\S2\\Web\\Projet_Web\\web\\resources", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 //FICHIER D'UPLOAD GENERE A LA RACINE DU PROJET GLASSFISH !
 public class ServletEtudiants extends HttpServlet {
+
     @EJB
     private GestionnaireMiage gestionnaireMiage;
     @EJB
@@ -126,22 +126,26 @@ public class ServletEtudiants extends HttpServlet {
                     //Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, photo, diplome);
                     boolean b = gestionnaireEtudiants.checkMail(email);
                     System.out.println("Servlet boolean : " + b);
-                    if(b){
+                    if (b == true) {
                         Etudiant e1 = gestionnaireEtudiants.creeEtudiant(nom, prenom, email, password, naissance, miage, nomPhoto, diplome, false);
                         System.out.println("Compte étudiant créé : " + nom + prenom + email + password + ", naissance " + naissance + nomPhoto + diplome);
                         session.setAttribute("badLog", false);
                         session.setAttribute("connexionEtudiant", true);
                         session.setAttribute("objEtudiant", e1.getId());
                         session.setAttribute("user", true);
+
+                        forwardTo = "index-form.jsp?";
+                        message = "Vous êtes maintenant connecté(e)";
+                        request.setAttribute("message", message);
                     } else {
+                        session.setAttribute("badLog", true);
+                        Collection<Miage> liste = gestionnaireMiage.getAllMiage();
+                        request.setAttribute("listeDesMiages", liste);
                         forwardTo = "participer-form.jsp?";
                         message = "L'adresse mail est déjà utilisée";
-                        session.setAttribute("badLog", true);
                         request.setAttribute("message", message);
-                        RequestDispatcher dp = request.getRequestDispatcher(forwardTo);
-                        dp.forward(request, response);
                     }
-                    
+
                 } else if (etat.equals("entreprise")) {
                     System.out.println("Entreprise");
                     String fonction = request.getParameter("fonction");
@@ -160,11 +164,10 @@ public class ServletEtudiants extends HttpServlet {
 
                     Entreprise ent1 = gestionnaireEtudiants.creeEntreprise(nom, prenom, email, password, fonction, tel, nomE, rueE, cp, ville, secteur);
 
+                    forwardTo = "index-form.jsp?";
+                    message = "Vous êtes maintenant connecté(e)";
+                    request.setAttribute("message", message);
                 }
-
-                forwardTo = "index-form.jsp?";
-                message = "Vous êtes maintenant connecté(e)";
-                request.setAttribute("message", message);
 
             } else if (action.equals("validerEtudiant")) {
                 String[] valeurs = request.getParameterValues("check");
@@ -178,7 +181,7 @@ public class ServletEtudiants extends HttpServlet {
                 forwardTo = "index-form.jsp?";
                 message = "Etudiant(s) validé(s)";
                 request.setAttribute("message", message);
-            }else if(action.equals("valider_vote_shirt")){
+            } else if (action.equals("valider_vote_shirt")) {
                 Collection<Miage> liste = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", liste);
                 String miage = request.getParameter("vote_shirt");
@@ -190,10 +193,10 @@ public class ServletEtudiants extends HttpServlet {
                     int idMiage = Integer.parseInt(str.trim());
                     gestionnaireVotes.ajouterVotes(idEtudiant, idMiage, false);
                 }
-                
+
                 forwardTo = "vote-form.jsp?action=valider_vote_shirt";
                 request.setAttribute("Vos votes ont été enregistrés", message);
-            }  else if(action.equals("valider_vote_video")) {
+            } else if (action.equals("valider_vote_video")) {
                 Collection<Miage> liste = gestionnaireMiage.getAllMiage();
                 request.setAttribute("listeDesMiages", liste);
                 String miage = request.getParameter("vote_video");
@@ -205,7 +208,7 @@ public class ServletEtudiants extends HttpServlet {
                     int idMiage = Integer.parseInt(str.trim());
                     gestionnaireVotes.ajouterVotes(idEtudiant, idMiage, true);
                 }
-                
+
                 forwardTo = "vote-form.jsp?action=valider_vote_video";
                 request.setAttribute("Vos votes ont été enregistrés", message);
             }
@@ -236,7 +239,7 @@ public class ServletEtudiants extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         processRequest(request, response);
     }
 
@@ -253,24 +256,22 @@ public class ServletEtudiants extends HttpServlet {
                 System.out.println("Fichier trouvé");
 
                 //printPart(part, out);
-                
                 String str = "D:\\glassfish-4.1\\glassfish\\domains\\domain1\\generated\\jsp\\Projet_web\\Photo_\\" + request.getParameter("nom");
                 File dir = new File(str);
-                if(!dir.exists()){
+                if (!dir.exists()) {
                     System.out.println("creating directory: " + dir.getName());
                     boolean result = false;
 
-                    try{
+                    try {
                         dir.mkdir();
                         result = true;
-                    } 
-                    catch(SecurityException se){
+                    } catch (SecurityException se) {
                         //handle it
                         System.out.println("Aborting..." + se);
                         this.doPost(request, response);
-                    }        
-                    if(result) {    
-                        System.out.println("DIR created");  
+                    }
+                    if (result) {
+                        System.out.println("DIR created");
                         System.out.println("Chemin : " + dir.getAbsolutePath());
                     }
                 } else {
