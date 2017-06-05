@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/perle/Desktop/M1%20MIAGE/S2/Web/Projet%20Web/src/java/etudiants/gestionnaires/GestionnaireEtudiants.java</file>
-            <file>file:/C:/Users/perle/Desktop/M1%20MIAGE/S2/Web/Projet%20Web/src/java/etudiants/modeles/Etudiant.java</file>
-            <file>file:/C:/Users/perle/Desktop/M1%20MIAGE/S2/Web/Projet%20Web/src/java/servlets/ServletEtudiants.java</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/participants/modeles/Etudiant.java</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/servlets/ServletEtudiants.java</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/web/header.jsp</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/web/participer.jsp</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/participants/modeles/Enseignant.java</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/vote/modele/Vote.java</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/vote/gestionnaire/GestionnaireVotes.java</file>
+            <file>file:/C:/Users/Christian/Desktop/Bureau/projetWeb/src/java/participants/gestionnaires/GestionnaireEtudiants.java</file>
         </group>
     </open-files>
 </project-private>
