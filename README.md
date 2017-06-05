@@ -1,7 +1,7 @@
 # Site Web pour les JNMs 2018
 
 
-### Membres du groupe : Perle Oualid et Christian Pagh-Birk
+### Membres du groupe : Perle Oualid et Christian Pagh-Birk 
 
 
 ### Les fonctionnalités qui ont été implémentées :
@@ -31,3 +31,5 @@
 8. Tous les étudiants validés ont alors accès à l'onglet de vote pour le concours de tee shirt et de vidéo. Ils peuvent voter pour trois miages maximum pour chaque concours. Une fois que le vote est pris en compte, il est automatiquement grisé afin qu'il ne puisse plus voter. 
 9. Ils peuvent également acheter un pack, avec une simulation de paiement avec PayPal. 
 10. Tous les participants à l'évènement ont accès au trombinoscope.
+
+### git : https://github.com/christpb/projetWeb
