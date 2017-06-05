@@ -57,7 +57,7 @@
                                 <div class="col s3 m3">
                                     <div class="card">  
                                         <div class="card-image">
-                                            <img src="resources/user.png">
+                                            <img src="resources/${u.photo}">
                                         </div>
                                         <div class="card-content">
                                             <p class="center">${u.prenom} ${u.nom}</p>

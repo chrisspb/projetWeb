@@ -71,7 +71,7 @@
                 <li><a href="#connexion">Se connecter</a></li>
                 <li><a href="ServletMiage?action=lien_participer">Participer</a></li>
             </c:if>
-            <c:if test = "${sessionScope['user'] != false}">
+            <c:if test = "${sessionScope['user'] == false}">
                 <li><a href="ServletParticipants?action=deconnexion">Se déconnecter</a></li> <!-- pourquoi ca s'affiche alors que c'est false ? -->
             </c:if>
         </ul>

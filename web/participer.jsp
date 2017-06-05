@@ -80,7 +80,7 @@
                                         <input type="file" name="fichier"><br>
                                     </div>
                                     <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text"  id="photo">
+                                        <input class="file-path validate" type="text"  id="photo" name="nomFichier">
                                     </div>
                                 </div>
                                 <fieldset>

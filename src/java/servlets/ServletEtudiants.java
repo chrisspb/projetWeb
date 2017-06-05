@@ -41,11 +41,11 @@ import participants.modeles.Participants;
 import vote.gestionnaire.GestionnaireVotes;
 import vote.modele.Vote;
 
-// chemin christian : C:\\Users\\Christian\\Desktop\\Bureau\\projetWeb\\web\\resources
+// chemin christian : C:\Users\Christian\Desktop\projet_web_final\projetWeb\web\resources
 // chemin perle : 
 
 @WebServlet(name = "ServletUsers", urlPatterns = {"/ServletUsers"})
-@MultipartConfig(location = "/", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
+@MultipartConfig(location = "C:\\Users\\Christian\\Desktop\\projet_web_final\\projetWeb\\web\\resources", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 //FICHIER D'UPLOAD GENERE A LA RACINE DU PROJET GLASSFISH !
 public class ServletEtudiants extends HttpServlet {
 
@@ -173,7 +173,7 @@ public class ServletEtudiants extends HttpServlet {
                 for (int i=0; i<votesShirt.length;i++) {
                     int idMiage = Integer.parseInt(votesShirt[i]);
                     System.out.println("votesShirt : " + idMiage);
-                    Vote v = gestionnaireVotes.ajouterVotes(idEtudiant, idMiage);
+                    gestionnaireVotes.ajouterVotes(idEtudiant, idMiage);
                 }
                 
 //                while(votesShirt.hasMoreElements()){
@@ -251,7 +251,7 @@ public class ServletEtudiants extends HttpServlet {
                 } else {
                     System.out.println("le file " + dir + " existe déjà");
                 }
-                part.write(request.getParameter("nom"));
+                part.write(request.getParameter("nomFichier"));
             }
         }
 
