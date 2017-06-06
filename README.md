@@ -16,6 +16,7 @@
 
 ### Le processus de déploiement : 
 - La base de données à créer s'appelle "etudiants" avec comme nom d'administrateur et mot de passe root
+- Changer le chemin contenu en haut dans le fichier "ServletEtudiants" (@MultipartConfig(location = chemin,...) en celui de votre chemin où se trouve le dossier "resources" du projet 
 - Exécuter le projet
 - Exécuter le fichier InsertRecords, qui se trouve dans le package jdbc.records, afin de créer un administrateur et la liste des miages (à exécuter qu'une seule fois car le persistence.xml est en mode create)
 
