@@ -52,7 +52,7 @@ public class GestionnaireMiage {
 
     public Collection<Miage> getAllMiage() {
         // Exécution d'une requête équivalente à un select *  
-        Query q = em.createQuery("select m from Miage m order by m");
+        Query q = em.createQuery("select m from Miage m order by m.miage");
         return q.getResultList();
     }
 }

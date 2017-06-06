@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import miage.gestionnaires.GestionnaireMiage;
 import participants.gestionnaires.GestionnaireEtudiants;
 import participants.modeles.Enseignant;
 import participants.modeles.Etudiant;
@@ -30,7 +31,8 @@ import participants.modeles.Etudiant;
  */
 @WebServlet(name = "ServletEnseignants", urlPatterns = {"/ServletEnseignants"})
 public class ServletEnseignants extends HttpServlet {
-
+    @EJB
+    private GestionnaireMiage gestionnaireMiage;
     @EJB
     private GestionnaireEtudiants gestionnaireEtudiants;
     @EJB
@@ -90,6 +92,14 @@ public class ServletEnseignants extends HttpServlet {
 
             forwardTo = "index-form.jsp?";
             message = "Etudiant(s) validé(s)";
+            request.setAttribute("message", message);
+        }
+        else if (action.equals("ajout_miage")) {
+            String miage = request.getParameter("miage");
+            gestionnaireMiage.newMiage(miage);
+            
+            forwardTo = "index-form.jsp?";
+            message = "Miage ajoutée";
             request.setAttribute("message", message);
         }
 

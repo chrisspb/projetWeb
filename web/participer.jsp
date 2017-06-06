@@ -24,7 +24,7 @@
         <div class="marge">
             <div class="card center-align">
                 <div class="card-content">
-                    <span class="card-title">Participer - ${sessionScope['badLog']}</span>
+                    <span class="card-title">Participer</span>
                     </br>
                     <p>Merci de remplir la procédure d'inscription ci-contre afin de participer aux JNM 2018.</p>
                     </br>

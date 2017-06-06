@@ -35,6 +35,7 @@
                 </c:if>
                 <c:if test = "${sessionScope['connexionEnseignant'] == true}">
                 <li><a href="ServletEnseignants?action=confirmer_inscription"><b>Confirmer les inscriptions</b></a></li>
+                <li><a href="ajout-form.jsp"><b>Ajouter une miage</b></a></li>
                 </c:if>    
             <li><a href="info-form.jsp">Infos pratiques</a></li>
             <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown1">Activités<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -60,6 +61,7 @@
                 </c:if>
                 <c:if test = "${sessionScope['connexionEnseignant'] == true}">
                 <li><a href="ServletEnseignants?action=confirmer_inscription"><b>Confirmer les inscriptions</b></a></li>
+                <li><a href="ajout-form.jsp"><b>Ajouter une miage</b></a></li>
                 </c:if>    
             <li><a href="info-form.jsp">Infos pratiques</a></li>
             <li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown2">Activités<i class="material-icons right">arrow_drop_down</i></a></li>

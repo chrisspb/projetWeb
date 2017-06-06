@@ -17,7 +17,7 @@
                 <div class="card-content">
                     <span class="card-title">Ajouter une Miage</span>
                     </br>
-                    <form class="col s12" action="ServletUsers" method="post">
+                    <form class="col s12" action="ServletEnseignants" method="post">
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">business</i>
